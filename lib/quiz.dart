@@ -35,57 +35,6 @@ class Quiz extends StatelessWidget {
 
 
 
-//class _MyQuizState extends State<Quiz> {
-//  @override
-//  Widget build(BuildContext context) {
-//
-//    var questionIndex = 0;
-//
-//    void answerQuestion(){
-//      setState(() {
-//        questionIndex += 1;
-//      });
-//    }
-//
-//    final List<Map<String, Object>> questions = [
-//      {
-//        QUESTION: "Is Coding In Flow actually my son?",
-//        ANSWERS: ["Yes", "No"]
-//      },
-//      {
-//        QUESTION: "Who's your favorite android teacher?",
-//        ANSWERS: ["Coding with Mitch", "Coding In Flow", "Donn Felker", "Nate Ebel"],
-//      },
-//      {
-//        QUESTION: "Is Flutter for babies?",
-//        ANSWERS: ["Yes", "No"],
-//      },
-//    ];
-//
-//    @override
-//    Widget build(BuildContext context) {
-//      return questionIndex < questions.length
-//          ? Column(
-//        children: [
-//          Question(
-//              questions[questionIndex][QUESTION]
-//          ),
-//          ...(questions[questionIndex][ANSWERS] as List<String>).map((answer) {
-//            return Answer(answerQuestion, answer);
-//          }).toList()
-//        ],
-//      )
-//          : Center(
-//        child: Text("done the thing"),
-//      );
-//    }
-//  }
-//
-//}
-
-
-
-
 
 
 
