@@ -14,7 +14,22 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      child: ListView.builder(
+      child: _userTransactions.isEmpty ? Column(
+        children: <Widget>[
+          Text(
+            "No transactions added yet!",
+            style: Theme.of(context).textTheme.headline6,
+          ),
+          SizedBox(height: 20,),
+          Container(
+            child: Image.asset(
+              "assets/images/waiting.png",
+              fit: BoxFit.cover,
+            ),
+            height: 200,
+          ),
+        ]
+      ) : ListView.builder(
         itemBuilder: (ctx, index) {
           return Card(
             child: Row(
@@ -25,7 +40,7 @@ class TransactionList extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: MediumTextSize,
-                      color: Colors.purple,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                   margin: EdgeInsets.symmetric(
@@ -34,7 +49,7 @@ class TransactionList extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                       border: Border.all(
-                        color: Colors.purple,
+                        color: Theme.of(context).primaryColor,
                         width: DefaultBorderWidth,
                       )
                   ),
@@ -47,11 +62,7 @@ class TransactionList extends StatelessWidget {
                     Container(
                       child: Text(
                         "${_userTransactions[index].title.toString()}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: MediumTextSize,
-                          color: Colors.black,
-                        ),
+                        style: Theme.of(context).textTheme.headline6,
                       ),
                     ),
                     Container(
