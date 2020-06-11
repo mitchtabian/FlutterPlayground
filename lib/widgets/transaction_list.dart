@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../styles.dart';
 import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
@@ -33,52 +32,27 @@ class TransactionList extends StatelessWidget {
       ) : ListView.builder(
         itemBuilder: (ctx, index) {
           return Card(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    "\$${_userTransactions[index].amount.toStringAsFixed(2)}",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: MediumTextSize,
-                      color: Theme.of(context).primaryColor,
+            elevation: 6,
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+            child: ListTile(
+              leading: CircleAvatar(
+                radius: 30,
+                child: Padding(
+                  padding: EdgeInsets.all(6),
+                  child: FittedBox(
+                    child: Text(
+                      "\$${_userTransactions[index].amount.toStringAsFixed(2)}"
                     ),
                   ),
-                  margin: EdgeInsets.symmetric(
-                      vertical: vCardMargin,
-                      horizontal: hCardMargin
-                  ),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Theme.of(context).primaryColor,
-                        width: DefaultBorderWidth,
-                      )
-                  ),
-                  padding: EdgeInsets.all(DefaultCardPadding),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      child: Text(
-                        "${_userTransactions[index].title.toString()}",
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        DateFormat.yMMMd().format(_userTransactions[index].date),
-                        style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: SmallTextSize,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
+              ),
+              title: Text(
+                _userTransactions[index].title,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              subtitle: Text(
+                DateFormat.yMMMd().format(_userTransactions[index].date),
+              ),
             ),
           );
         },

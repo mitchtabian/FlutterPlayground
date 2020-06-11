@@ -1,6 +1,6 @@
-import 'package:firstflutterapp/widgets/chart_bar.dart';
 import 'package:flutter/material.dart';
 
+import 'package:firstflutterapp/widgets/chart_bar.dart';
 import 'package:firstflutterapp/models/transaction.dart';
 import 'package:intl/intl.dart';
 
