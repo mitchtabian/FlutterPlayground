@@ -98,7 +98,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
 6. FittedBox widget
 	- automatically shrinks text to fit a box
 	- on android this would be difficult to implement. You'd have to calculate the space and manually set the text size based on testing. With Flutter there is a simple widget that does this.
-
+7. showDatePicker(context: null, initialDate: null, firstDate: null, lastDate: null)
+    - nice packaged way to show a date picker
 
 # Thoughts on Flutter
 1. June 11
