@@ -37,7 +37,9 @@ Playing around with flutter. Figuring out if it is for babies or not.
 		- ListView.builder() vs ListView(children: [])
 8. Asynchronous work?
 	- Is there a "main thread" issue?
-
+9. Memory leaks?
+    - Can you leak memory?
+    - how can you detect? (ex: Leak Canary on android)
 
 
 
@@ -128,8 +130,9 @@ Playing around with flutter. Figuring out if it is for babies or not.
          );`
 6. Build and Flutter Widget Tree
     - `137: Widget Tree & Element Tree`
-    - 
-
+7. Lifecycle states
+    - `WidgetsBindingObserver`
+    - How to listen for the various lifecycle states in a particular widget or app: `146. Understanding the App Lifecycle`
 
 
 # Thoughts on Flutter
@@ -138,6 +141,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
 		1. cross platform
 		2. it's easier to hack something together that works. There aren't as many architectural patterns, architectures, etc... And much less judgement from the developer community. Like if you build a piece of shit on native and show the community, they will crucify you. But if you did the same thing with flutter, I doubt anyone would say much.
 2. June 12
+    - Nothing to say today. 
+3. 
     
 
 

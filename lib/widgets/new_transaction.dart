@@ -7,10 +7,13 @@ class NewTransaction extends StatefulWidget {
 
   final Function _addNewTx;
 
-  NewTransaction(this._addNewTx);
+  NewTransaction(this._addNewTx){
+  }
 
   @override
-  _NewTransactionState createState() => _NewTransactionState();
+  _NewTransactionState createState() {
+    return _NewTransactionState();
+  }
 }
 
 class _NewTransactionState extends State<NewTransaction> {
@@ -18,7 +21,11 @@ class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime _selectedDate;
-  
+
+  _NewTransactionState(){
+  }
+
+
   _presentDatePicker(BuildContext ctx){
     showDatePicker(
         context: ctx,
