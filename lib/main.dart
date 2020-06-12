@@ -1,9 +1,10 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 
-import './quiz.dart';
-import './result.dart';
+import 'models/transaction.dart';
+import 'package:firstflutterapp/widgets/chart.dart';
+import 'package:firstflutterapp/widgets/new_transaction.dart';
+import 'package:firstflutterapp/widgets/transaction_list.dart';
+import 'styles.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,63 +15,120 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-  var _questionIndex = 0;
-  var _totalScore = 0;
-
-  void _resetQuiz(){
-    setState(() {
-      _questionIndex = 0;
-      _totalScore = 0;
-    });
-  }
-
-  void _answerQuestion(int score){
-    _totalScore += score;
-    setState(() {
-      _questionIndex += 1;
-    });
-    print("score: " + _totalScore.toString());
-  }
-
-  final List<Map<String, Object>> _questions = [
-    {
-      QUESTION: "Is Coding In Flow actually my son?",
-      ANSWERS: [
-        {"text": "Yes", "score": 1},
-        {"text": "No", "score": 0}
-        ]
-    },
-    {
-      QUESTION: "Who's your favorite android teacher?",
-      ANSWERS: [
-        {"text": "Coding with Mitch", "score": 1},
-        {"text": "Coding In Flow", "score": 2},
-        {"text": "Donn Felker", "score": 3},
-        {"text": "Nate Ebel", "score": 4},
-      ]
-    },
-    {
-      QUESTION: "Is Flutter for babies?",
-      ANSWERS: [
-        {"text": "Yes", "score": 1},
-        {"text": "No", "score": 0}
-      ],
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("First Flutter App"),),
-        body: _questionIndex < _questions.length
-            ? Quiz(_questions, _questionIndex, _answerQuestion)
-            : Result(_totalScore, _resetQuiz),
-      )
+      title: "Personal Expenses",
+      theme: ThemeData(
+          primarySwatch: Colors.purple,
+          accentColor: Colors.amber,
+          errorColor: Colors.red,
+          fontFamily: "Quicksand",
+          textTheme: ThemeData.light().textTheme.copyWith(
+            headline6: TextStyle(
+              fontFamily: "OpenSans",
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            ),
+            button: TextStyle(
+              color: Colors.white
+            )
+          ),
+          appBarTheme: AppBarTheme(
+            textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                  fontFamily: "OpenSans",
+                  fontSize: 20,
+                ),
+            ),
+          )
+      ),
+      home: MyHomePage(),
     );
   }
+}
 
+class MyHomePage extends StatefulWidget {
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  final List<Transaction> _userTransactions = [];
+
+  List<Transaction> get _recentTransactions{
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
+
+  _addNewTransaction(String newTitle, double newAmount, DateTime chosenDate){
+    final newTx = Transaction(
+        id: DateTime.now().toString(),
+        title: newTitle,
+        amount: newAmount,
+        date: chosenDate
+    );
+    setState(() {
+      _userTransactions.add(newTx);
+    });
+  }
+
+  _startAddNewTransaction(BuildContext ctx){
+    showModalBottomSheet(context: ctx, builder: (_) {
+      return NewTransaction(_addNewTransaction);
+    });
+  }
+
+  _deleteTransaction(String id){
+    setState(() {
+      _userTransactions.removeWhere((element) => element.id == id);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    final appBar = AppBar(
+      title: Text("Personal Expenses",),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: () => _startAddNewTransaction(context),
+        )
+      ],
+    );
+
+    return Scaffold(
+        appBar: appBar,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                  height: (MediaQuery.of(context).size.height
+                      - appBar.preferredSize.height
+                      - MediaQuery.of(context).padding.top) * 0.3,
+                  child: Chart(_recentTransactions)
+              ),
+              Container(
+                  height: (MediaQuery.of(context).size.height
+                      - appBar.preferredSize.height
+                      - MediaQuery.of(context).padding.top) * 0.7,
+                  child: TransactionList(_userTransactions, _deleteTransaction)
+              )
+            ],
+          ),
+        ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => _startAddNewTransaction(context),
+      ),
+    );
+  }
 }
 
 
@@ -85,35 +143,6 @@ class _MyAppState extends State<MyApp> {
 
 
 
-
-
-
-
-
-
-
-class Person{
-
-  String name;
-  int age;
-
-  Person({@required this.name, @required this.age});
-
-}
-
-double addNumbers(double num1, double num2){
-  return num1 + num2;
-}
-
-void stuff(){
-  var p1 = Person(name: "Max", age: 30);
-  var p2 = Person(name: "Guy", age: 31);
-  print(p1.name);
-  print(p2.name);
-  double firstResult = addNumbers(p1.age.toDouble(), p2.age.toDouble());
-  print("The sum of their ages: " + firstResult.toString());
-
-}
 
 
 
