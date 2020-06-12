@@ -119,7 +119,16 @@ Playing around with flutter. Figuring out if it is for babies or not.
 4. LayoutBuilder
     - can wrap a widget in this to apply constraints or get information about the sizing. Similar to ViewTreeObserver on android.
         - `119. Using the LayoutBuilder widget`
-    - 
+5. SystemChrome
+    - Set allowed device orientations (force portrait only or landscape only)
+    - system wide settings for application
+    - `WidgetsFlutterBinding.ensureInitialized();`
+    - `SystemChrome.setPreferredOrientations(
+             [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]
+         );`
+6. 
+
+
 
 # Thoughts on Flutter
 1. June 11
