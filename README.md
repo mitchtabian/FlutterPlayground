@@ -106,8 +106,15 @@ Playing around with flutter. Figuring out if it is for babies or not.
 1. trailing/leading attributes in a ListTile
     - Ex: (trailing) Trash can icon at the end of a list item layout. Convenient since this is very common
     - Ex: (leading) Something at the front of a list item layout. 
-2. 
-
+2. Nested Scrolling
+    - If you have a SingleChildScrollView and a Listview inside it, it works as you would expect. Which is not the case on android. Scrolling is "difficult" to deal with regarding nesting.
+    - But on flutter it is simple. Whichever widget you touch will scroll.
+3. MediaQuery
+    1. holds information:
+        - Screen pixel ratio
+        - disable animations
+        - brightness
+        - size (width and height of device)
 
 # Thoughts on Flutter
 1. June 11
