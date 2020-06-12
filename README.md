@@ -101,12 +101,21 @@ Playing around with flutter. Figuring out if it is for babies or not.
 7. showDatePicker(context: null, initialDate: null, firstDate: null, lastDate: null)
     - nice packaged way to show a date picker
 
+
+# Day 5 (June 12)
+1. trailing/leading attributes in a ListTile
+    - Ex: (trailing) Trash can icon at the end of a list item layout. Convenient since this is very common
+    - Ex: (leading) Something at the front of a list item layout. 
+2. 
+
+
 # Thoughts on Flutter
 1. June 11
 	- I think Flutter became very popular among "new" developers because:
 		1. cross platform
 		2. it's easier to hack something together that works. There aren't as many architectural patterns, architectures, etc... And much less judgement from the developer community. Like if you build a piece of shit on native and show the community, they will crucify you. But if you did the same thing with flutter, I doubt anyone would say much.
-
+2. June 12
+    
 
 
 

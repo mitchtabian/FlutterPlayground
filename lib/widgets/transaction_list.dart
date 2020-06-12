@@ -6,14 +6,15 @@ import '../models/transaction.dart';
 class TransactionList extends StatelessWidget {
 
   final List<Transaction> _userTransactions;
+  final Function _deleteTransaction;
 
-  TransactionList(this._userTransactions);
+  TransactionList(this._userTransactions, this._deleteTransaction);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 300,
+      height: 450,
       child: _userTransactions.isEmpty ? Column(
         children: <Widget>[
           Text(
@@ -52,6 +53,13 @@ class TransactionList extends StatelessWidget {
               ),
               subtitle: Text(
                 DateFormat.yMMMd().format(_userTransactions[index].date),
+              ),
+              trailing: IconButton(
+                icon: Icon(Icons.delete),
+                color: Theme.of(context).errorColor,
+                onPressed: () {
+                  _deleteTransaction(_userTransactions[index].id);
+                },
               ),
             ),
           );

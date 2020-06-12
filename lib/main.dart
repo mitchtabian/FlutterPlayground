@@ -22,6 +22,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.purple,
           accentColor: Colors.amber,
+          errorColor: Colors.red,
           fontFamily: "Quicksand",
           textTheme: ThemeData.light().textTheme.copyWith(
             headline6: TextStyle(
@@ -63,12 +64,12 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String newTitle, double newAmount){
+  _addNewTransaction(String newTitle, double newAmount, DateTime chosenDate){
     final newTx = Transaction(
         id: DateTime.now().toString(),
         title: newTitle,
         amount: newAmount,
-        date: DateTime.now()
+        date: chosenDate
     );
     setState(() {
       _userTransactions.add(newTx);
@@ -78,6 +79,12 @@ class _MyHomePageState extends State<MyHomePage> {
   _startAddNewTransaction(BuildContext ctx){
     showModalBottomSheet(context: ctx, builder: (_) {
       return NewTransaction(_addNewTransaction);
+    });
+  }
+
+  _deleteTransaction(String id){
+    setState(() {
+      _userTransactions.removeWhere((element) => element.id == id);
     });
   }
 
@@ -98,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Chart(_recentTransactions),
-              TransactionList(_userTransactions)
+              TransactionList(_userTransactions, _deleteTransaction)
             ],
           ),
         ),

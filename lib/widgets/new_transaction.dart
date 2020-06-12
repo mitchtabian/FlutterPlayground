@@ -36,15 +36,18 @@ class _NewTransactionState extends State<NewTransaction> {
   }
 
   _submitData(){
+    if(_amountController.text.isEmpty){
+      return;
+    }
     final enteredTitle = _titleController.text;
     if(_amountController.text.isEmpty){
       return;
     }
     final enteredAmount = double.parse(_amountController.text);
-    if(enteredTitle.isEmpty || enteredAmount <= 0){
+    if(enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate == null){
       return;
     }
-    widget._addNewTx(enteredTitle, enteredAmount);
+    widget._addNewTx(enteredTitle, enteredAmount, _selectedDate);
     Navigator.of(context).pop();
   }
 
