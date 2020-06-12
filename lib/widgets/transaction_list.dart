@@ -12,6 +12,7 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("build() TransactionList");
     final mediaQuery = MediaQuery.of(context);
     return Container(
       alignment: Alignment.center,
@@ -37,12 +38,12 @@ class TransactionList extends StatelessWidget {
         itemBuilder: (ctx, index) {
           return Card(
             elevation: 6,
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
             child: ListTile(
               leading: CircleAvatar(
                 radius: 30,
                 child: Padding(
-                  padding: EdgeInsets.all(6),
+                  padding: const EdgeInsets.all(6),
                   child: FittedBox(
                     child: Text(
                       "\$${_userTransactions[index].amount.toStringAsFixed(2)}"
@@ -59,13 +60,15 @@ class TransactionList extends StatelessWidget {
               ),
               trailing: mediaQuery.size.width > 460
                   ? FlatButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    _deleteTransaction(_userTransactions[index].id);
+                  },
                   textColor: Theme.of(context).errorColor,
-                  icon: Icon(Icons.delete),
-                  label: Text("Delete"),
+                  icon: const Icon(Icons.delete),
+                  label: const Text("Delete"),
               )
                   : IconButton(
-                icon: Icon(Icons.delete),
+                icon: const Icon(Icons.delete),
                 color: Theme.of(context).errorColor,
                 onPressed: () {
                   _deleteTransaction(_userTransactions[index].id);

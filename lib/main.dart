@@ -100,6 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print("build() MyHomePageState");
     final mediaQuery = MediaQuery.of(context);
 
     final isLandscape = mediaQuery.orientation == Orientation.landscape;
@@ -121,45 +122,47 @@ class _MyHomePageState extends State<MyHomePage> {
         child: TransactionList(_userTransactions, _deleteTransaction)
     );
 
-    return Scaffold(
-        appBar: appBar,
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+    final pageBody = SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          if(isLandscape) Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              if(isLandscape) Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("Show Chart"),
-                  Switch(
-                    value: _showChart,
-                    onChanged: (bool) {
-                      setState(() {
-                        _showChart = bool;
-                      });
-                    },
-                  ),
-                ],
+              Text("Show Chart"),
+              Switch(
+                value: _showChart,
+                onChanged: (bool) {
+                  setState(() {
+                    _showChart = bool;
+                  });
+                },
               ),
-              if (!isLandscape)
-                Container(
-                    height: (mediaQuery.size.height
-                        - appBar.preferredSize.height
-                        - mediaQuery.padding.top) * 0.3,
-                    child: Chart(_recentTransactions)
-                ),
-              if (!isLandscape)
-                txListWidget,
-              if (isLandscape)
-                _showChart ?  Container(
-                    height: (mediaQuery.size.height
-                        - appBar.preferredSize.height
-                        - mediaQuery.padding.top) * 0.7,
-                    child: Chart(_recentTransactions)
-                ) : txListWidget
             ],
           ),
-        ),
+          if (!isLandscape)
+            Container(
+                height: (mediaQuery.size.height
+                    - appBar.preferredSize.height
+                    - mediaQuery.padding.top) * 0.3,
+                child: Chart(_recentTransactions)
+            ),
+          if (!isLandscape)
+            txListWidget,
+          if (isLandscape)
+            _showChart ?  Container(
+                height: (mediaQuery.size.height
+                    - appBar.preferredSize.height
+                    - mediaQuery.padding.top) * 0.7,
+                child: Chart(_recentTransactions)
+            ) : txListWidget
+        ],
+      ),
+    );
+
+    return Scaffold(
+        appBar: appBar,
+        body: pageBody,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

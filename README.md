@@ -122,11 +122,13 @@ Playing around with flutter. Figuring out if it is for babies or not.
 5. SystemChrome
     - Set allowed device orientations (force portrait only or landscape only)
     - system wide settings for application
-    - `WidgetsFlutterBinding.ensureInitialized();`
+    - `WidgetsFlutterBinding.ensureInitialized();` 
     - `SystemChrome.setPreferredOrientations(
              [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]
          );`
-6. 
+6. Build and Flutter Widget Tree
+    - `137: Widget Tree & Element Tree`
+    - 
 
 
 
