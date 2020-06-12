@@ -110,11 +110,16 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - If you have a SingleChildScrollView and a Listview inside it, it works as you would expect. Which is not the case on android. Scrolling is "difficult" to deal with regarding nesting.
     - But on flutter it is simple. Whichever widget you touch will scroll.
 3. MediaQuery
+    - This isn't better than what we have available on android. I prefer the layout designs using xml for this.
     1. holds information:
         - Screen pixel ratio
         - disable animations
         - brightness
         - size (width and height of device)
+4. LayoutBuilder
+    - can wrap a widget in this to apply constraints or get information about the sizing. Similar to ViewTreeObserver on android.
+        - `119. Using the LayoutBuilder widget`
+    - 
 
 # Thoughts on Flutter
 1. June 11
