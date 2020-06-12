@@ -98,6 +98,58 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget _buildTxListContent(MediaQueryData mediaQuery, AppBar appBar){
+    return Container(
+        height: (mediaQuery.size.height
+            - appBar.preferredSize.height
+            - mediaQuery.padding.top) * 0.7,
+        child: TransactionList(_userTransactions, _deleteTransaction)
+    );
+  }
+
+  Widget _buildChartContent(MediaQueryData mediaQuery, AppBar appBar, double heightPct){
+    return Container(
+        height: (mediaQuery.size.height
+            - appBar.preferredSize.height
+            - mediaQuery.padding.top) * heightPct,
+        child: Chart(_recentTransactions)
+    );
+  }
+
+  Widget _buildLandscapeContent(MediaQueryData mediaQuery, AppBar appBar){
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text("Show Chart"),
+            Switch(
+              value: _showChart,
+              onChanged: (bool) {
+                setState(() {
+                  _showChart = bool;
+                });
+              },
+            ),
+          ],
+        ),
+        _showChart
+            ?  _buildChartContent(mediaQuery, appBar, 0.7)
+            : _buildTxListContent(mediaQuery, appBar)
+      ],
+    );
+  }
+
+  Widget _buildPortraitContent(MediaQueryData mediaQuery, AppBar appBar){
+
+    return Column(
+      children: <Widget>[
+        _buildChartContent(mediaQuery, appBar, 0.3),
+        _buildTxListContent(mediaQuery, appBar)
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     print("build() MyHomePageState");
@@ -115,47 +167,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
 
-    final txListWidget = Container(
-        height: (mediaQuery.size.height
-            - appBar.preferredSize.height
-            - mediaQuery.padding.top) * 0.7,
-        child: TransactionList(_userTransactions, _deleteTransaction)
-    );
-
     final pageBody = SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          if(isLandscape) Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text("Show Chart"),
-              Switch(
-                value: _showChart,
-                onChanged: (bool) {
-                  setState(() {
-                    _showChart = bool;
-                  });
-                },
-              ),
-            ],
-          ),
-          if (!isLandscape)
-            Container(
-                height: (mediaQuery.size.height
-                    - appBar.preferredSize.height
-                    - mediaQuery.padding.top) * 0.3,
-                child: Chart(_recentTransactions)
-            ),
-          if (!isLandscape)
-            txListWidget,
-          if (isLandscape)
-            _showChart ?  Container(
-                height: (mediaQuery.size.height
-                    - appBar.preferredSize.height
-                    - mediaQuery.padding.top) * 0.7,
-                child: Chart(_recentTransactions)
-            ) : txListWidget
+          if(isLandscape) _buildLandscapeContent(mediaQuery, appBar),
+          if (!isLandscape) _buildPortraitContent(mediaQuery, appBar),
         ],
       ),
     );
