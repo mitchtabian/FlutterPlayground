@@ -2,6 +2,10 @@
 Playing around with flutter. Figuring out if it is for babies or not.
 
 
+# This app
+**Expense Tracker**
+![Screenshot](https://octodex.github.com/images/yaktocat.png)
+
 # Resources:
 1. Travel Information app:
 	- https://www.youtube.com/watch?v=pTJJsmejUOQ
