@@ -4,7 +4,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 
 # This app
 **Expense Tracker**
-![Screenshot](https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Expense-Tracker/assets/images/app_screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Expense-Tracker/assets/images/app_screenshot.png | width=250)
 
 # Resources:
 1. Travel Information app:
