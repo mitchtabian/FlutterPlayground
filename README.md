@@ -2,6 +2,12 @@
 Playing around with flutter. Figuring out if it is for babies or not.
 
 
+# This app
+**Recipes app**
+
+<img src="" width="250" height="auto">
+
+
 # Resources:
 1. Travel Information app:
 	- https://www.youtube.com/watch?v=pTJJsmejUOQ
@@ -137,7 +143,34 @@ Playing around with flutter. Figuring out if it is for babies or not.
 # Day 6 (June 16)
 1. End Expense Tracker app. Beginning to work on Navigation. 
     - (`https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/15033798#overview`)
-2. 
+2. InkWell
+    - Same as GestureDetector but fires off a ripple effect when tap occurs
+3. Navigator
+    - `159. Navigating to a New Page`
+    - `160. Passing Data via the Constructor`
+    - MaterialPageRoute
+    - Navigation is much simpler. Especially regarding passing arguments to a new screen.
+        1. You can pass constructor arguments to the widgets. On Android you have to use bundles. Much more complex.
+          - Fragments/Activities can accept constructor arguments, but you must use a Factory (complex).
+        2. You can easily access the application stack and push/pull whatever you want with Navigator.
+    - **downside**
+        - This is simple, but I could see this getting cumbersom in a large app. Named Routes seem like a better approach. In which case it is not really simpler. It's basically the same as NavigationComponents.
+4. Named Routes
+    - `161. Named Routes and Passing Data with Named Routes`
+    - Very similar to website navigation.
+    - This is a better option for a larger app. Basically you define all the navigation in a "map".
+5. Rounded images
+    - `165. Displaying Recipe Items & Using Network Images`
+    - Widget: `ClipRRect`
+        - Clip the corners of an image
+6. Network images
+    - `165. Displaying Recipe Items & Using Network Images`
+    - `Image.network(src)`
+    - Very easy to display a network image. With Android this is very confusing for beginners because third party libraries are technically the best way. And there is so many.
+    - No worries about asynchronous loading?... 
+    - No worries about blocking the ui thread?...
+7. 
+    
 
 
 # Thoughts on Flutter
@@ -147,8 +180,14 @@ Playing around with flutter. Figuring out if it is for babies or not.
 		2. it's easier to hack something together that works. There aren't as many architectural patterns, architectures, etc... And much less judgement from the developer community. Like if you build a piece of shit on native and show the community, they will crucify you. But if you did the same thing with flutter, I doubt anyone would say much.
 2. June 12
     - Nothing to say today. 
-3. 
-    
+3. June 16
+    1. Navigation
+        - Navigation is much simpler. Especially regarding passing arguments to a new screen.
+        - 2 things make it simpler:
+            1. You can pass constructor arguments to the widgets. On Android you have to use bundles. Much more complex.
+                - Fragments/Activities can accept constructor arguments, but you must use a Factory (complex).
+            2. You can easily access the application stack and push/pull whatever you want with Navigator.
+    2. 
 
 
 

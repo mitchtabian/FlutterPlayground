@@ -9,9 +9,14 @@ const DefaultCardMargin = 10.0;
 const hCardMargin = 15.0;
 const vCardMargin = 10.0;
 
+const RoundedCardRadius = 15.0;
+
 const DefaultCardPadding = 10.0;
 const hCardPadding = 10.0;
 const vCardPadding = 10.0;
+
+const DefaultGridPadding = 20.0;
+
 
 const DefaultCardElevation = 5.0;
 
