@@ -4,6 +4,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
 
 # This app
 **Expense Tracker**
+
+
 <img src="https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Expense-Tracker/assets/images/app_screenshot.png" width="250" height="auto">
 
 # Resources:
