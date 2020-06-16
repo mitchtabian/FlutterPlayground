@@ -134,6 +134,11 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - `WidgetsBindingObserver`
     - How to listen for the various lifecycle states in a particular widget or app: `146. Understanding the App Lifecycle`
 
+# Day 6 (June 16)
+1. End Expense Tracker app. Beginning to work on Navigation. 
+    - (`https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/15033798#overview`)
+2. 
+
 
 # Thoughts on Flutter
 1. June 11
