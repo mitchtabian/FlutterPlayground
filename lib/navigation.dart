@@ -1,8 +1,11 @@
 
+// Tabs screen
+// file: tabs_screen.dart
+const NAV_TABS_SCREEN = "/";
+
 // Categories screen
 // file: categories_screen.dart
-const NAV_CATEGORIES_SCREEN = "/";
-
+const NAV_CATEGORIES_SCREEN = "/categories";
 
 // Category meals screen
 // file: category_meals_screen.dart

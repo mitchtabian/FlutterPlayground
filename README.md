@@ -177,15 +177,18 @@ Playing around with flutter. Figuring out if it is for babies or not.
 2. onGenerateRoute
     - dynamically generate a route (could be used for dynamically generating screens)
     - MaterialApp param
-3. 
-    
+3. Tabs
+    - `170. Adding TabBar to the AppBar`
+    - DefaultTabController
+    - This was very easy to set up and looks good. Much easier than setting this up natively. Very intuitive.
+4. 
 
 
 # Thoughts on Flutter
 1. June 11
 	- I think Flutter became very popular among "new" developers because:
 		1. cross platform
-		2. it's easier to hack something together that works. There aren't as many architectural patterns, architectures, etc... And much less judgement from the developer community. Like if you build a piece of shit on native and show the community, they will crucify you. But if you did the same thing with flutter, I doubt anyone would say much.
+		2. it's easier to hack something together that works. There aren't as many architectural patterns, architectures, etc... And much less judgement from the developer community. Like if you build a piece of shit on native and show the community, they will crucify you. But if you did the same thing with flutter, I doubt anyone would say much. 
 2. June 12
     - Nothing to say today. 
 3. June 16
