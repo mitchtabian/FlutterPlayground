@@ -201,7 +201,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - This replaces the existing page on the backstack when navigating. This is equally simple on native (with Nav components).
 7. State management
     - I have a lot of questions about state management at this point. Because in the course if we want to manage some kind of "global" property we have to pass it around widget constructors which gets very complicated. I believe later in the course I will learn a better system.
-8. 
+
 
 
 # Thoughts on Flutter
