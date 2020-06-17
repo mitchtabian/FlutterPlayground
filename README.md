@@ -5,7 +5,17 @@ Playing around with flutter. Figuring out if it is for babies or not.
 # This app
 **Recipes app**
 
-<img src="" width="250" height="auto">
+<img src="https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Recipes-App/assets/images/category_list.png" width="250" height="auto">
+
+<img src="https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Recipes-App/assets/images/category_meals.png" width="250" height="auto">
+
+<img src="https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Recipes-App/assets/images/filters.png" width="250" height="auto">
+
+<img src="https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Recipes-App/assets/images/meal_detail1.png" width="250" height="auto">
+
+<img src="https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Recipes-App/assets/images/meal_detail2.png" width="250" height="auto">
+
+<img src="https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Recipes-App/assets/images/nav_drawer.png" width="250" height="auto">
 
 
 # Resources:
