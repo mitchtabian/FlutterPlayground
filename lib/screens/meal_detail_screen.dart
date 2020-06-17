@@ -7,6 +7,7 @@ class MealDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
     final String _mealId = routeArgs[ARG_MEAL_ID];
     final _meal = DUMMY_MEALS.firstWhere((meal) {
@@ -100,6 +101,12 @@ class MealDetailScreen extends StatelessWidget {
             SizedBox(height: 10,),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.delete),
+        onPressed: (){
+          Navigator.of(context).pop(_mealId);
+        },
       ),
     );
   }

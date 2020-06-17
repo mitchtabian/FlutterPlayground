@@ -184,8 +184,16 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - This was very easy to set up and looks good. Much easier than setting this up natively. Very intuitive.
 4. Bottom Tabs
     - `171. Adding a bottom TabBar`
+    - https://gist.github.com/mitchtabian/01c54ffb9362b592641349d7e0d7467b
     - Interestingly, setting tabs up on the bottom is much more difficult than tabs on the top. This is not intuitive.
-    - 
+5. Navigation drawer
+    - `172. Adding a custom drawer`
+    - Drawer param in a scaffold
+    - Pretty simple. But I wouldn't say this is necessarily simpler than on native.
+6. clearing items from backstack when navigating
+    - `Navigator.of(context).pushReplacementNamed(NAV_TABS_SCREEN)`
+    - This replaces the existing page on the backstack when navigating. This is equally simple on native.
+7. 
 
 # Thoughts on Flutter
 1. June 11

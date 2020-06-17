@@ -18,6 +18,10 @@ const ARG_CATEGORY_ID = "arg_category_id";
 const NAV_MEAL_DETAIL_SCREEN = "/meal-detail";
 const ARG_MEAL_ID = "arg_meal_id";
 
+// Filters screen
+// file: filters_screen.dart
+const NAV_FILTERS_SCREEN = "/filters";
+
 
 
 

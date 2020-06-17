@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../navigation.dart';
 
 
-class CategoryItem extends StatelessWidget {
+class CategoryItem extends StatefulWidget {
 
   final String _id;
   final String _title;
@@ -12,13 +12,20 @@ class CategoryItem extends StatelessWidget {
 
   CategoryItem(this._id, this._title, this._color);
 
+  @override
+  _CategoryItemState createState() => _CategoryItemState();
+}
+
+class _CategoryItemState extends State<CategoryItem> {
+
+
   _selectCategory(BuildContext context, ){
     Navigator.pushNamed(
       context,
       NAV_CATEGORY_MEALS_SCREEN,
       arguments: {
-        ARG_CATEGORY_ID: _id,
-        ARG_CATEGORY_TITLE: _title
+        ARG_CATEGORY_ID: widget._id,
+        ARG_CATEGORY_TITLE: widget._title
       },
     );
   }
@@ -34,14 +41,14 @@ class CategoryItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(DefaultPadding),
         child: Text(
-          _title,
+          widget._title,
           style: Theme.of(context).textTheme.headline6,
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              _color.withOpacity(0.7),
-              _color
+              widget._color.withOpacity(0.7),
+              widget._color
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,

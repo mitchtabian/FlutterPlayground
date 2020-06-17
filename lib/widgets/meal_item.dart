@@ -12,6 +12,7 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeItem;
 
   MealItem({
     @required this.id,
@@ -19,7 +20,8 @@ class MealItem extends StatelessWidget {
     @required this.imageUrl,
     @required this.duration,
     @required this.complexity,
-    @required this.affordability
+    @required this.affordability,
+    @required this.removeItem
   });
 
   String get _complexityText{
@@ -65,7 +67,11 @@ class MealItem extends StatelessWidget {
       arguments: {
         ARG_MEAL_ID: id,
       },
-    );
+    ).then((result) {
+      // executed when popped off
+      // Navigator.of(context).pop(_mealId);
+      removeItem(result); // access mealId if 'delete' fab is pressed
+    });
   }
 
   @override

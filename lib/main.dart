@@ -1,4 +1,5 @@
 import 'file:///D:/Flutter%20Projects/first_flutter_app/lib/screens/category_meals_screen.dart';
+import 'package:firstflutterapp/screens/filters_screen.dart';
 import 'package:firstflutterapp/screens/meal_detail_screen.dart';
 import 'package:firstflutterapp/screens/not_found_screen.dart';
 import 'package:firstflutterapp/screens/tabs_screen.dart';
@@ -60,6 +61,7 @@ class _MyAppState extends State<MyApp> {
         NAV_CATEGORIES_SCREEN: (ctx) => CategoriesScreen(),
         NAV_CATEGORY_MEALS_SCREEN: (ctx) => CategoryMealsScreen(),
         NAV_MEAL_DETAIL_SCREEN: (ctx) => MealDetailScreen(),
+        NAV_FILTERS_SCREEN: (ctx) => FiltersScreen(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(
