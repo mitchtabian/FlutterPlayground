@@ -190,9 +190,9 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - `172. Adding a custom drawer`
     - Drawer param in a scaffold
     - Pretty simple. But I wouldn't say this is necessarily simpler than on native.
-6. clearing items from backstack when navigating
+6. removing items from backstack when navigating
     - `Navigator.of(context).pushReplacementNamed(NAV_TABS_SCREEN)`
-    - This replaces the existing page on the backstack when navigating. This is equally simple on native.
+    - This replaces the existing page on the backstack when navigating. This is equally simple on native (with Nav components).
 7. 
 
 # Thoughts on Flutter
