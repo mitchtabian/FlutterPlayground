@@ -177,12 +177,15 @@ Playing around with flutter. Figuring out if it is for babies or not.
 2. onGenerateRoute
     - dynamically generate a route (could be used for dynamically generating screens)
     - MaterialApp param
-3. Tabs
+3. Top Tabs
     - `170. Adding TabBar to the AppBar`
+    - https://gist.github.com/mitchtabian/d16b239d849f8d175d1f6801011dc0ef
     - DefaultTabController
     - This was very easy to set up and looks good. Much easier than setting this up natively. Very intuitive.
-4. 
-
+4. Bottom Tabs
+    - `171. Adding a bottom TabBar`
+    - Interestingly, setting tabs up on the bottom is much more difficult than tabs on the top. This is not intuitive.
+    - 
 
 # Thoughts on Flutter
 1. June 11
@@ -201,6 +204,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 4. June 17
     1. I love the way you can build layouts in flutter.
         - I wish I could design layouts natively like Flutter does. Hopefully compose allows this.
+    2. Setting up tabs was pretty easy. Definitely much more beginner friendly than with native.
 5. 
 
 
