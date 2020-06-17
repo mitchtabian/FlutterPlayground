@@ -17,7 +17,8 @@ class CategoryItem extends StatelessWidget {
       context,
       NAV_CATEGORY_MEALS_SCREEN,
       arguments: {
-        ARG_CATEGORY_ID: _id, ARG_CATEGORY_TITLE: _title
+        ARG_CATEGORY_ID: _id,
+        ARG_CATEGORY_TITLE: _title
       },
     );
   }

@@ -169,7 +169,15 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - Very easy to display a network image. With Android this is very confusing for beginners because third party libraries are technically the best way. And there is so many.
     - No worries about asynchronous loading?... 
     - No worries about blocking the ui thread?...
-7. 
+
+# Day 7 (June 17)
+1. onUnknownRoute
+    - Basically this is the web equivalent of a 404 page. 
+    - MaterialApp param
+2. onGenerateRoute
+    - dynamically generate a route (could be used for dynamically generating screens)
+    - MaterialApp param
+3. 
     
 
 
@@ -187,8 +195,10 @@ Playing around with flutter. Figuring out if it is for babies or not.
             1. You can pass constructor arguments to the widgets. On Android you have to use bundles. Much more complex.
                 - Fragments/Activities can accept constructor arguments, but you must use a Factory (complex).
             2. You can easily access the application stack and push/pull whatever you want with Navigator.
-    2. 
-
+4. June 17
+    1. I love the way you can build layouts in flutter.
+        - I wish I could design layouts natively like Flutter does. Hopefully compose allows this.
+5. 
 
 
 
