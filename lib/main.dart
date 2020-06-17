@@ -1,10 +1,12 @@
 import 'file:///D:/Flutter%20Projects/first_flutter_app/lib/screens/category_meals_screen.dart';
+import 'package:firstflutterapp/models/dummy_data.dart';
 import 'package:firstflutterapp/screens/filters_screen.dart';
 import 'package:firstflutterapp/screens/meal_detail_screen.dart';
 import 'package:firstflutterapp/screens/not_found_screen.dart';
 import 'package:firstflutterapp/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'models/meal.dart';
 import 'screens/categories_screen.dart';
 import 'navigation.dart';
 
@@ -20,6 +22,37 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  Map<String, bool> _filters = {
+    "gluten": false,
+    "lactose": false,
+    "vegan": false,
+    "vegetarian": false,
+  };
+
+  List<Meal> _availableMeals = DUMMY_MEALS;
+
+  _saveFilters(Map<String, bool> filterData){
+    setState(() {
+      _filters = filterData;
+      _availableMeals = DUMMY_MEALS.where((meal) {
+        if(_filters["gluten"] && !meal.isGlutenFree){
+          return false;
+        }
+        if(_filters["lactose"] && !meal.isLactoseFree){
+          return false;
+        }
+        if(_filters["vegan"] && !meal.isVegan){
+          return false;
+        }
+        if(_filters["vegetarian"] && !meal.isVegetarian){
+          return false;
+        }
+        return true;
+      }).toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,9 +92,9 @@ class _MyAppState extends State<MyApp> {
       routes: {
         NAV_TABS_SCREEN: (ctx) => TabsScreen(),
         NAV_CATEGORIES_SCREEN: (ctx) => CategoriesScreen(),
-        NAV_CATEGORY_MEALS_SCREEN: (ctx) => CategoryMealsScreen(),
+        NAV_CATEGORY_MEALS_SCREEN: (ctx) => CategoryMealsScreen(_availableMeals),
         NAV_MEAL_DETAIL_SCREEN: (ctx) => MealDetailScreen(),
-        NAV_FILTERS_SCREEN: (ctx) => FiltersScreen(),
+        NAV_FILTERS_SCREEN: (ctx) => FiltersScreen(_filters, _saveFilters),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(

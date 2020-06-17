@@ -159,6 +159,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - `161. Named Routes and Passing Data with Named Routes`
     - Very similar to website navigation.
     - This is a better option for a larger app. Basically you define all the navigation in a "map".
+    - Advantages: 
+        1. All routes are defined in main widget so if any application-wide state variables need to be managed it's easy to pass to constructor.
 5. Rounded images
     - `165. Displaying Recipe Items & Using Network Images`
     - Widget: `ClipRRect`
