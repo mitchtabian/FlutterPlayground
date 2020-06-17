@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 
 class MealDetailScreen extends StatelessWidget {
 
+  final Function _toggleFavorite;
+  final Function _isFavorite;
+
+  MealDetailScreen(this._toggleFavorite, this._isFavorite);
+
   @override
   Widget build(BuildContext context) {
 
@@ -103,9 +108,9 @@ class MealDetailScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete),
+        child: _isFavorite(_mealId) ? Icon(Icons.star) : Icon(Icons.star_border),
         onPressed: (){
-          Navigator.of(context).pop(_mealId);
+          _toggleFavorite(_mealId);
         },
       ),
     );

@@ -195,7 +195,10 @@ Playing around with flutter. Figuring out if it is for babies or not.
 6. removing items from backstack when navigating
     - `Navigator.of(context).pushReplacementNamed(NAV_TABS_SCREEN)`
     - This replaces the existing page on the backstack when navigating. This is equally simple on native (with Nav components).
-7. 
+7. State management
+    - I have a lot of questions about state management at this point. Because in the course if we want to manage some kind of "global" property we have to pass it around widget constructors which gets very complicated. I believe later in the course I will learn a better system.
+8. 
+
 
 # Thoughts on Flutter
 1. June 11
@@ -215,6 +218,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
     1. I love the way you can build layouts in flutter.
         - I wish I could design layouts natively like Flutter does. Hopefully compose allows this.
     2. Setting up tabs was pretty easy. Definitely much more beginner friendly than with native.
+    3. Performance wise, it seems like the biggest thing you need to watch out for is prevent widget rebuilds whenever possible. So proper state management is key.
 5. 
 
 
