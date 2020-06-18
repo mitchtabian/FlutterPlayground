@@ -1,3 +1,4 @@
+import 'package:firstflutterapp/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,22 +20,31 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context){
-        return ProductsProvider();
-      },
-      child: MaterialApp(
-        title: "MyShop",
-        theme: ThemeData(
-          primarySwatch: Colors.purple,
-          accentColor: Colors.deepOrange,
-          fontFamily: "Lato",
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context){
+            return ProductsProvider();
+          },
         ),
-        home: ProductsOverviewScreen(),
-        routes: {
-          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
-        },
-      ),
+        ChangeNotifierProvider(
+          create: (context){
+            return CartProvider();
+          },
+        )
+      ],
+        child: MaterialApp(
+          title: "MyShop",
+          theme: ThemeData(
+            primarySwatch: Colors.purple,
+            accentColor: Colors.deepOrange,
+            fontFamily: "Lato",
+          ),
+          home: ProductsOverviewScreen(),
+          routes: {
+            ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+          },
+        )
     );
   }
 }

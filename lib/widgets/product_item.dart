@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/cart_provider.dart';
 import '../providers/product_provider.dart';
 import '../screens/product_detail_screen.dart';
 import '../styles.dart';
@@ -12,6 +13,7 @@ class ProductItem extends StatelessWidget {
 
     final productProvider = Provider.of<ProductProvider>(context, listen: false);
     final product = productProvider.product;
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(RoundedRectRadius),

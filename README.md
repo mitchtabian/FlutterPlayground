@@ -232,6 +232,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
         - Only the part of the widget tree that is wrapped with Consumer will be rebuilt. As opposed to using a global Provider which will rebuild the entire tree.
 8. 
 
+
 # Thoughts on Flutter
 1. June 11
 	- I think Flutter became very popular among "new" developers because:
@@ -253,7 +254,9 @@ Playing around with flutter. Figuring out if it is for babies or not.
     3. Performance wise, it seems like the biggest thing you need to watch out for is prevent widget rebuilds whenever possible. So proper state management is key.
 5. June 18
     1. My first thoughts as I started working this morning were "I really like the way you can build UIs with Flutter". I'm someone who always builds UIs in XML. I never use the design tab. So for me this feels like a 2020 version of that.
-    2. 
+    2. Provider is a cool pattern. Basically this is LiveData
+    3. 
+6. 
 
 
 
