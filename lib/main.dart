@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:firstflutterapp/screens/product_detail_screen.dart';
-import 'package:firstflutterapp/screens/products_overview_screen.dart';
+import 'screens/product_detail_screen.dart';
+import 'screens/products_overview_screen.dart';
 import 'providers/products_provider.dart';
 
 void main() {
@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) {
+      create: (context){
         return ProductsProvider();
       },
       child: MaterialApp(

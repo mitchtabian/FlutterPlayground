@@ -210,14 +210,27 @@ Playing around with flutter. Figuring out if it is for babies or not.
 1. Beginning "advanced" state management today.
 2. Provider
     - https://pub.dev/packages/provider
-3. ChangeNotifier
+    - Seems to be the equivalent of LiveData on native?
+3. ChangeNotifier & "**Provider Pattern**"
     - ex: `class ProductsProvider with ChangeNotifier`
     - Helps to establish "behind the scenes" communication tunnels between widgets
+    - ex: https://gist.github.com/mitchtabian/a87d9c7ab464c937af25b605f8c2cdb2
 4. ChangeNotifierProvider
     - `190. Working with Providers and Listeners`
     - For providing a global state provider to widgets lower in the hierarchy
-5. 
-
+5. Mixins
+    - Like a generalized extension
+    - Can use many mixins but only a single class extension
+    - ex: `Person extends Mammal with Agility, Consciousness`
+        - A person is a Mammal. But a person is not "Agility". A person has the ability to use Agility.
+6. `ChangeNotifierProvider.value(value:)` vs `ChangeNotifierProvider(create:)`
+    - for lists/reusing objects: `ChangeNotifierProvider.value(value:)`
+    - for new views or stuff that is not reused `ChangeNotifierProvider(create:)`
+7. Consumer with of Provider
+    - https://gist.github.com/mitchtabian/9b0d00576b24f9eb2ed073de00c67030
+    - Advantage:
+        - Only the part of the widget tree that is wrapped with Consumer will be rebuilt. As opposed to using a global Provider which will rebuild the entire tree.
+8. 
 
 # Thoughts on Flutter
 1. June 11
