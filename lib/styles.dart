@@ -11,12 +11,15 @@ const vCardMargin = 10.0;
 
 const RoundedCardRadius = 15.0;
 
+const RoundedRectRadius = 10.0;
+
 const DefaultCardPadding = 10.0;
 const hCardPadding = 10.0;
 const vCardPadding = 10.0;
 
+const DefaultGridCrossAxisSpacing = 10.0;
+const DefaultGridMainAxisSpacing = 10.0;
 const DefaultGridPadding = 20.0;
-
 
 const DefaultCardElevation = 5.0;
 

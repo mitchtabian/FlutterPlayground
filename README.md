@@ -3,7 +3,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 
 
 # This app
-**Recipes app**
+**Shopping App**
 
 <img src="" width="250" height="auto">
 
@@ -26,7 +26,9 @@ Playing around with flutter. Figuring out if it is for babies or not.
 # Third Party libs
 1. Dates
 	- Intl: https://pub.dev/documentation/intl/latest/
-2.
+2. Provider
+    - https://pub.dev/packages/provider
+3. 
 
 
 
@@ -46,12 +48,18 @@ Playing around with flutter. Figuring out if it is for babies or not.
 9. Memory leaks?
     - Can you leak memory?
     - how can you detect? (ex: Leak Canary on android)
+10. Animations on navigation?
+    - At this point everything I've seen just looks like an activity navigation. Which looks like crap.
+11. APK / project size?
+    - How does APK / project size compare with native?
 
 
 
 # Things I like
-1.
-
+1. Displaying images from network
+    - super simple with no third party library needed
+    - Without a third party on android this is not fun. I can honestly say I don't even know how to do that.
+2. 
 
 
 
@@ -197,7 +205,18 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - This replaces the existing page on the backstack when navigating. This is equally simple on native (with Nav components).
 7. State management
     - I have a lot of questions about state management at this point. Because in the course if we want to manage some kind of "global" property we have to pass it around widget constructors which gets very complicated. I believe later in the course I will learn a better system.
-8. 
+
+# Day 8 (June 18)
+1. Beginning "advanced" state management today.
+2. Provider
+    - https://pub.dev/packages/provider
+3. ChangeNotifier
+    - ex: `class ProductsProvider with ChangeNotifier`
+    - Helps to establish "behind the scenes" communication tunnels between widgets
+4. ChangeNotifierProvider
+    - `190. Working with Providers and Listeners`
+    - For providing a global state provider to widgets lower in the hierarchy
+5. 
 
 
 # Thoughts on Flutter
@@ -219,8 +238,9 @@ Playing around with flutter. Figuring out if it is for babies or not.
         - I wish I could design layouts natively like Flutter does. Hopefully compose allows this.
     2. Setting up tabs was pretty easy. Definitely much more beginner friendly than with native.
     3. Performance wise, it seems like the biggest thing you need to watch out for is prevent widget rebuilds whenever possible. So proper state management is key.
-5. 
-
+5. June 18
+    1. My first thoughts as I started working this morning were "I really like the way you can build UIs with Flutter". I'm someone who always builds UIs in XML. I never use the design tab. So for me this feels like a 2020 version of that.
+    2. 
 
 
 
