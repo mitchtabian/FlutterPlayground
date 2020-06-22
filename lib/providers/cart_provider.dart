@@ -51,6 +51,11 @@ class CartProvider with ChangeNotifier{
     notifyListeners();
   }
 
+  clear(){
+    _items = {};
+    notifyListeners();
+  }
+
 }
 
 

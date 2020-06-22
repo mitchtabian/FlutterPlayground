@@ -35,6 +35,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
 # Questions
 1. Debugging
 2. state
+    1. Provider Pattern
+    2. Bloc pattern?
 3. architecture?
 	- block pattern?
 4. Testing?
