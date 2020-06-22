@@ -230,7 +230,13 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - https://gist.github.com/mitchtabian/9b0d00576b24f9eb2ed073de00c67030
     - Advantage:
         - Only the part of the widget tree that is wrapped with Consumer will be rebuilt. As opposed to using a global Provider which will rebuild the entire tree.
-8. 
+
+# Day 9 (June 22)
+1. Dismissible widget
+    - used to "swipe out" items from a list. Very convenient and easy to use
+    - Great animation
+2. 
+
 
 
 # Thoughts on Flutter
@@ -255,8 +261,9 @@ Playing around with flutter. Figuring out if it is for babies or not.
 5. June 18
     1. My first thoughts as I started working this morning were "I really like the way you can build UIs with Flutter". I'm someone who always builds UIs in XML. I never use the design tab. So for me this feels like a 2020 version of that.
     2. Provider is a cool pattern. Basically this is LiveData
-    3. 
-6. 
+6. June 22:
+    1. I started the day by beginning to rebuild another project of mine with Flutter (it is a java app). I struggled to do very basic things. Which is understandable because I have not built something myself yet. I have only watched courses.
+    2. 
 
 
 

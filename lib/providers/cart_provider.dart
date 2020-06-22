@@ -4,10 +4,22 @@ import '../models/cart_item.dart';
 
 class CartProvider with ChangeNotifier{
 
-  Map<String, CartItem> _items;
+  Map<String, CartItem> _items = {};
 
   Map<String, CartItem> get items{
     return {..._items};
+  }
+
+  int get getItemCount{
+    return _items.length;
+  }
+
+  double get getTotalAmount{
+    double total = 0;
+    _items.forEach((key, cartItem) {
+      total += (cartItem.price.toDouble() * cartItem.quantity.toDouble());
+    });
+    return total;
   }
 
   addItem(String productId, double price, String title){
@@ -31,6 +43,25 @@ class CartProvider with ChangeNotifier{
         );
       });
     }
+    notifyListeners();
+  }
+
+  removeItem(String productId){
+    _items.remove(productId);
+    notifyListeners();
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
