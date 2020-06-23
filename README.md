@@ -254,7 +254,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
     3. Simple to incorporate "undo" action 
 4. Dialogs
     - AlertDialogs are very easy to set up and use the input the user chose.
-5. 
+
 
 # Thoughts on Flutter
 1. June 11
