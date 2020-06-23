@@ -28,7 +28,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
 	- Intl: https://pub.dev/documentation/intl/latest/
 2. Provider
     - https://pub.dev/packages/provider
-3. 
+3. HTTP requests
+    - https://pub.dev/packages/http#-installing-tab-
 
 
 
@@ -56,8 +57,10 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - How does APK / project size compare with native?
 12. SharedPreferences?
     - What is the equivalent for Flutter? (Think saving user settings)
-    
-    
+13. Caching?
+    - How does Flutter handle data persistence? (SQLite?...)
+
+
 
 # What makes Flutter "Easier" than Native?
 1. Dependency conflicts
@@ -269,7 +272,13 @@ Playing around with flutter. Figuring out if it is for babies or not.
 2. FocusNode
     - Programatically decide where the focus goes after moving from Form fields
     - Can leak memory, need to dispose
-3. 
+3. Futures
+    - `238. Futures and Async Code`
+4. HTTP requests
+    - Reminds me of http requests with python. Basically the same.
+5. Async and await
+    - `241. Working with async and await`
+6. 
 
 
 # Thoughts on Flutter
@@ -299,7 +308,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
         - original repo link: https://github.com/mitchtabian/Local-db-Cache-Retrofit-REST-API-MVVM
         - Flutter rebuild: https://github.com/mitchtabian/Flutter-Recipes-App
 7. June 23:
-    1. 
+    1. Input forms, dealing with focus, and input validation are not simple. This has no advantage over native.
+    2. 
 
 
 

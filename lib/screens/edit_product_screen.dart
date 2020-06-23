@@ -19,6 +19,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   final _imageUrlController = TextEditingController();
   final _imageUrlFocusNode = FocusNode();
   final _form = GlobalKey<FormState>();
+  var _isLoading = false;
   var _editedProduct = Product(
     id: null,
     title: "",
@@ -60,14 +61,43 @@ class _EditProductScreenState extends State<EditProductScreen> {
       return;
     }
     _form.currentState.save();
+    _setIsLoading(true);
     if(_editedProduct.id != null){
-      Provider.of<ProductsProvider>(context, listen: false).updateProduct(_editedProduct.id, _editedProduct);
+      Provider.of<ProductsProvider>(context, listen: false)
+          .updateProduct(_editedProduct.id, _editedProduct);
     }
     else{
-      Provider.of<ProductsProvider>(context, listen: false).addProduct(_editedProduct);
+      Provider.of<ProductsProvider>(context, listen: false)
+          .addProduct(_editedProduct)
+          .catchError((error){
+            _setIsLoading(false);
+            return showDialog(
+              context: context,
+              builder: (ctx) => AlertDialog(
+                title: Text("Error"),
+                content: Text("Something went wrong posting the data to the server."),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              ),
+            );
+          })
+          .then((_) {
+            _setIsLoading(false);
+            Navigator.of(context).pop();
+          });
     }
+  }
 
-    Navigator.of(context).pop();
+  _setIsLoading(bool isLoading){
+    setState(() {
+      _isLoading = isLoading;
+    });
   }
 
 
@@ -118,7 +148,11 @@ class _EditProductScreenState extends State<EditProductScreen> {
           )
         ],
       ),
-      body: Padding(
+      body: _isLoading ?
+      Center(
+        child: CircularProgressIndicator(),
+      ):
+      Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
           key: _form,

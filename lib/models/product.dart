@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+
 class Product {
 
   final String id;
@@ -17,5 +18,7 @@ class Product {
     @required this.imageUrl,
     this.isFavorite = false,
   });
+
+
 
 }
