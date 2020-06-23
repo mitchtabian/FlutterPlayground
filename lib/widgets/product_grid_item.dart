@@ -6,7 +6,7 @@ import '../providers/product_provider.dart';
 import '../screens/product_detail_screen.dart';
 import '../styles.dart';
 
-class ProductItem extends StatelessWidget {
+class ProductGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

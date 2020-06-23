@@ -1,4 +1,3 @@
-import 'package:firstflutterapp/screens/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +7,9 @@ import 'providers/products_provider.dart';
 import 'providers/cart_provider.dart';
 import 'providers/order_provider.dart';
 import 'screens/cart_screen.dart';
+import 'screens/edit_product_screen.dart';
+import 'screens/orders_screen.dart';
+import 'screens/user_products_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,6 +55,8 @@ class _MyAppState extends State<MyApp> {
             ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
             CartScreen.routeName: (ctx) => CartScreen(),
             OrdersScreen.routeName: (ctx) => OrdersScreen(),
+            UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
+            EditProductScreen.routeName: (ctx) => EditProductScreen(),
           },
         )
     );

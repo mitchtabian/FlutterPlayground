@@ -54,6 +54,10 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - At this point everything I've seen just looks like an activity navigation. Which looks like crap.
 11. APK / project size?
     - How does APK / project size compare with native?
+12. SharedPreferences?
+    - What is the equivalent for Flutter? (Think saving user settings)
+    
+    
 
 # What makes Flutter "Easier" than Native?
 1. Dependency conflicts
@@ -255,6 +259,18 @@ Playing around with flutter. Figuring out if it is for babies or not.
 4. Dialogs
     - AlertDialogs are very easy to set up and use the input the user chose.
 
+# Day 10 (June 23)
+1. Forms and TextFormFields
+    - Reminds me of HTML forms. Cool how they built a Form widget with Form fields that are built to work together.
+    1. This is surprisingly a lot of work. I don't think this is less code than native would be to create a screen for getting inputs from the user.
+        - `222. Submitting Forms`
+        - Also dealing with the focus and doing form validation is a lot of work. Definitely this is not more concise than native.
+    2. Form validation reminds me of django. You get a boolean that says if the form is valid or not, then take action or show errors.
+2. FocusNode
+    - Programatically decide where the focus goes after moving from Form fields
+    - Can leak memory, need to dispose
+3. 
+
 
 # Thoughts on Flutter
 1. June 11
@@ -282,7 +298,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
     1. I started the day by beginning to rebuild another project of mine with Flutter (it is a java app). I struggled to do very basic things. Which is understandable because I have not built something myself yet. I have only watched courses.
         - original repo link: https://github.com/mitchtabian/Local-db-Cache-Retrofit-REST-API-MVVM
         - Flutter rebuild: https://github.com/mitchtabian/Flutter-Recipes-App
-    
+7. June 23:
+    1. 
 
 
 
