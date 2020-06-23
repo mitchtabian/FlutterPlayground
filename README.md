@@ -55,6 +55,13 @@ Playing around with flutter. Figuring out if it is for babies or not.
 11. APK / project size?
     - How does APK / project size compare with native?
 
+# What makes Flutter "Easier" than Native?
+1. Dependency conflicts
+    - With native, many dependencies do not work with other dependencies. For example, Navigation version 1.2.3 might not work with Fragments version 1.4.2 (not actual versions, this is just an example). This can cause **MASSIVE** headaches when developing. Especially if you are a beginner.
+    - Flutter has basically one dependency for all Material design widgets. 'package:flutter/material.dart'
+2. Beautiful prebuilt widgets
+    - There is many prebuilt widgets designed for specific scenarios you run into on mobile. One example that comes to mind is the ListTile. It's awesome for list items as it contains a "leading", "subtitle", "title" and "trailing" param. These params orient the widgets you place inside them into specific positions. On Native you'd need to build a custom adapter and custom layout which is very time consuming.
+3. ...
 
 
 # Things I like
@@ -237,8 +244,10 @@ Playing around with flutter. Figuring out if it is for babies or not.
 1. Dismissible widget
     - used to "swipe out" items from a list. Very convenient and easy to use
     - Great animation
-2. 
-
+2. Started rebuilding my Local DB caching course app using Flutter
+    - This is to help learn flutter with a project I've already done. (https://github.com/mitchtabian/Local-db-Cache-Retrofit-REST-API-MVVM)
+    - So far, within about 2 hours I built the complete skeleton with navigation and static data.
+3. 
 
 
 # Thoughts on Flutter
@@ -265,7 +274,9 @@ Playing around with flutter. Figuring out if it is for babies or not.
     2. Provider is a cool pattern. Basically this is LiveData
 6. June 22:
     1. I started the day by beginning to rebuild another project of mine with Flutter (it is a java app). I struggled to do very basic things. Which is understandable because I have not built something myself yet. I have only watched courses.
-    2. 
+        - original repo link: https://github.com/mitchtabian/Local-db-Cache-Retrofit-REST-API-MVVM
+        - Flutter rebuild: https://github.com/mitchtabian/Flutter-Recipes-App
+    
 
 
 
