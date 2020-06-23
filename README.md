@@ -79,7 +79,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 1. I like how some color opacity's come prebuilt as constants.
 	- ex: black12, black26, black87, etc..
 	- makes things more consistent across different apps.
-	- Gives description. Ex: "This is a good constrasting color for light themes."
+	- Gives description. Ex: "This is a good contrasting color for light themes."
 2. Images
 	- It is way easier to display a simple image. No third party library needed. No async knowledge.
 3. Assets
@@ -247,8 +247,14 @@ Playing around with flutter. Figuring out if it is for babies or not.
 2. Started rebuilding my Local DB caching course app using Flutter
     - This is to help learn flutter with a project I've already done. (https://github.com/mitchtabian/Local-db-Cache-Retrofit-REST-API-MVVM)
     - So far, within about 2 hours I built the complete skeleton with navigation and static data.
-3. 
-
+3. Snackbars
+    - Working with Snackbars was very easy. 
+    1. Simple to show
+    2. Simple to hide if one was already showing and want to show a new one
+    3. Simple to incorporate "undo" action 
+4. Dialogs
+    - AlertDialogs are very easy to set up and use the input the user chose.
+5. 
 
 # Thoughts on Flutter
 1. June 11
