@@ -24,7 +24,7 @@ class UserProductsScreen extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushNamed(EditProductScreen.routeName);
             },
-          )
+          ),
         ],
       ),
       drawer: AppDrawer(),
@@ -34,6 +34,7 @@ class UserProductsScreen extends StatelessWidget {
           itemBuilder: (_, index) => Column(
             children: <Widget>[
               UserProductListItem(
+                  productsData.items[index].product.id,
                   productsData.items[index].product.title,
                   productsData.items[index].product.imageUrl
               ),
