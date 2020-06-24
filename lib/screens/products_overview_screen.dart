@@ -95,7 +95,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       body: _isLoading?
       Center(
         child: CircularProgressIndicator(),
-      ):
+      ) :
       ProductsGrid(_showOnlyFavoritesData),
     );
   }
