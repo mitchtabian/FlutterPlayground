@@ -50,6 +50,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 	- Is there a "main thread" issue?
 9. Memory leaks?
     - Can you leak memory?
+        - Yes you can. And I have no idea how to detect.
     - how can you detect? (ex: Leak Canary on android)
 10. Animations on navigation?
     - At this point everything I've seen just looks like an activity navigation. Which looks like crap.
@@ -59,6 +60,14 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - What is the equivalent for Flutter? (Think saving user settings)
 13. Caching?
     - How does Flutter handle data persistence? (SQLite?...)
+14. Push notifications
+    - I heard this was difficult
+15. Camera preview manipulation
+    1. Is it difficult to get a live preview of camera?
+    2. Compare with CameraX?
+16. Long-running services?
+    - Suppose something that needs to execute even if the app closes or it's in progress when the app closes
+17. 
 
 
 
@@ -75,94 +84,96 @@ Playing around with flutter. Figuring out if it is for babies or not.
 1. Displaying images from network
     - super simple with no third party library needed
     - Without a third party on android this is not fun. I can honestly say I don't even know how to do that.
-2. 
 
 
 
-# Day 1 (June 2)
-1. Kinda neat. Interesting state management
 
-# Day 2 (June 3)
-1. I like how some color opacity's come prebuilt as constants.
-	- ex: black12, black26, black87, etc..
-	- makes things more consistent across different apps.
-	- Gives description. Ex: "This is a good contrasting color for light themes."
-2. Images
-	- It is way easier to display a simple image. No third party library needed. No async knowledge.
-3. Assets
-	- Getting stuff from assets is much easier. No need for context or any of that BS. Just write the path and boom you got it.
-
-# Day 3 (June 4)
-1. Finished ListView + DetailView with static data example
-	- https://github.com/mitchtabian/FlutterPlayground/tree/listview-static-data
-	- I'm not amazed by this. I could have built the same thing on android with the same amount of code and time.
-	- I guess the fact that it is **cross platform** is the real payoff.
-2. Dates
-	- https://pub.dev/packages/intl#-readme-tab-
-	- Working with dates is very easy with intl third party library.
-3. Inputs
-	1. All inputs must be Strings?
-		- Obviously I don't like this. b/c you have to do the conversions yourself after the fact.
-4. SingleChildScrollView
-	- Like a ScrollView?
-	- This is cool. It would be nice if a Recyclerview was this easy to hook up and delegate scroll behavior to the parent. Often times it has issues if multiple views that can detect gestures are involved. But I wonder... What is the performance like with a massive list? Say 1000 entries with media?
-
-# Day 4 (June 11)
-1. ListView
-	- ListView.builder(itemBuilder: <>, itemCount: <>) will **not** load items that are not visible
-		- This is the `Recyclerview` equivalent
-		- itemBuilder: is the RecyclerView Adapter basically
-	- ListView(children[]) will load ALL items, even if they are not visible on screen.
-2. showModalBottomSheet(context: ctx, builder: (bCtx){})
-	- This is a nice built-in widget for displaying a bottom sheet. Pretty convenient.
-	- video: `91. Showing a Model Bottom Sheet` @ 7:55
-3. Navigator
-	1. Navigator.of(context).pop();
-		- Navigator is a "global" navigation object? Like the backstack on android?
-4. ThemeData(primarySwatch: Colors.purple)
-	- This is cool. You can easily set the theme to a variety of pre-packaged material colors.
-	- this isn't that much different than what native does though. You have a theme in stlyes.xml
-	- *However* this is much less confusing than with android. There is so many different themes and sub-themes. Some don't work with others and cause problems. Flutter seems very straightforward.
-	- video: `93: configuring and using themes`
-5. Creating a Chart
-	1. Creating/drawing shapes is extremely simple compared to native.
-		- `100. Creating Bars for our Chart`
-6. FittedBox widget
-	- automatically shrinks text to fit a box
-	- on android this would be difficult to implement. You'd have to calculate the space and manually set the text size based on testing. With Flutter there is a simple widget that does this.
-7. showDatePicker(context: null, initialDate: null, firstDate: null, lastDate: null)
-    - nice packaged way to show a date picker
+# Day 11 (June 24)
+1. 
 
 
-# Day 5 (June 12)
-1. trailing/leading attributes in a ListTile
-    - Ex: (trailing) Trash can icon at the end of a list item layout. Convenient since this is very common
-    - Ex: (leading) Something at the front of a list item layout. 
-2. Nested Scrolling
-    - If you have a SingleChildScrollView and a Listview inside it, it works as you would expect. Which is not the case on android. Scrolling is "difficult" to deal with regarding nesting.
-    - But on flutter it is simple. Whichever widget you touch will scroll.
-3. MediaQuery
-    - This isn't better than what we have available on android. I prefer the layout designs using xml for this.
-    1. holds information:
-        - Screen pixel ratio
-        - disable animations
-        - brightness
-        - size (width and height of device)
-4. LayoutBuilder
-    - can wrap a widget in this to apply constraints or get information about the sizing. Similar to ViewTreeObserver on android.
-        - `119. Using the LayoutBuilder widget`
-5. SystemChrome
-    - Set allowed device orientations (force portrait only or landscape only)
-    - system wide settings for application
-    - `WidgetsFlutterBinding.ensureInitialized();` 
-    - `SystemChrome.setPreferredOrientations(
-             [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]
-         );`
-6. Build and Flutter Widget Tree
-    - `137: Widget Tree & Element Tree`
-7. Lifecycle states
-    - `WidgetsBindingObserver`
-    - How to listen for the various lifecycle states in a particular widget or app: `146. Understanding the App Lifecycle`
+# Day 10 (June 23)
+1. Forms and TextFormFields
+    - Reminds me of HTML forms. Cool how they built a Form widget with Form fields that are built to work together.
+    1. This is surprisingly a lot of work. I don't think this is less code than native would be to create a screen for getting inputs from the user.
+        - `222. Submitting Forms`
+        - Also dealing with the focus and doing form validation is a lot of work. Definitely this is not more concise than native.
+    2. Form validation reminds me of django. You get a boolean that says if the form is valid or not, then take action or show errors.
+2. FocusNode
+    - Programatically decide where the focus goes after moving from Form fields
+    - Can leak memory, need to dispose
+3. Futures
+    - `238. Futures and Async Code`
+4. HTTP requests
+    - Reminds me of http requests with python. Basically the same.
+5. Async and await
+    - `241. Working with async and await`
+
+# Day 9 (June 22)
+1. Dismissible widget
+    - used to "swipe out" items from a list. Very convenient and easy to use
+    - Great animation
+2. Started rebuilding my Local DB caching course app using Flutter
+    - This is to help learn flutter with a project I've already done. (https://github.com/mitchtabian/Local-db-Cache-Retrofit-REST-API-MVVM)
+    - So far, within about 2 hours I built the complete skeleton with navigation and static data.
+3. Snackbars
+    - Working with Snackbars was very easy. 
+    1. Simple to show
+    2. Simple to hide if one was already showing and want to show a new one
+    3. Simple to incorporate "undo" action 
+4. Dialogs
+    - AlertDialogs are very easy to set up and use the input the user chose.
+
+# Day 8 (June 18)
+1. Beginning "advanced" state management today.
+2. Provider
+    - https://pub.dev/packages/provider
+    - Seems to be the equivalent of LiveData on native?
+3. ChangeNotifier & "**Provider Pattern**"
+    - ex: `class ProductsProvider with ChangeNotifier`
+    - Helps to establish "behind the scenes" communication tunnels between widgets
+    - ex: https://gist.github.com/mitchtabian/a87d9c7ab464c937af25b605f8c2cdb2
+4. ChangeNotifierProvider
+    - `190. Working with Providers and Listeners`
+    - For providing a global state provider to widgets lower in the hierarchy
+5. Mixins
+    - Like a generalized extension
+    - Can use many mixins but only a single class extension
+    - ex: `Person extends Mammal with Agility, Consciousness`
+        - A person is a Mammal. But a person is not "Agility". A person has the ability to use Agility.
+6. `ChangeNotifierProvider.value(value:)` vs `ChangeNotifierProvider(create:)`
+    - for lists/reusing objects: `ChangeNotifierProvider.value(value:)`
+    - for new views or stuff that is not reused `ChangeNotifierProvider(create:)`
+7. Consumer with of Provider
+    - https://gist.github.com/mitchtabian/9b0d00576b24f9eb2ed073de00c67030
+    - Advantage:
+        - Only the part of the widget tree that is wrapped with Consumer will be rebuilt. As opposed to using a global Provider which will rebuild the entire tree.
+
+# Day 7 (June 17)
+1. onUnknownRoute
+    - Basically this is the web equivalent of a 404 page. 
+    - MaterialApp param
+2. onGenerateRoute
+    - dynamically generate a route (could be used for dynamically generating screens)
+    - MaterialApp param
+3. Top Tabs
+    - `170. Adding TabBar to the AppBar`
+    - https://gist.github.com/mitchtabian/d16b239d849f8d175d1f6801011dc0ef
+    - DefaultTabController
+    - This was very easy to set up and looks good. Much easier than setting this up natively. Very intuitive.
+4. Bottom Tabs
+    - `171. Adding a bottom TabBar`
+    - https://gist.github.com/mitchtabian/01c54ffb9362b592641349d7e0d7467b
+    - Interestingly, setting tabs up on the bottom is much more difficult than tabs on the top. This is not intuitive.
+5. Navigation drawer
+    - `172. Adding a custom drawer`
+    - Drawer param in a scaffold
+    - Pretty simple. But I wouldn't say this is necessarily simpler than on native.
+6. removing items from backstack when navigating
+    - `Navigator.of(context).pushReplacementNamed(NAV_TABS_SCREEN)`
+    - This replaces the existing page on the backstack when navigating. This is equally simple on native (with Nav components).
+7. State management
+    - I have a lot of questions about state management at this point. Because in the course if we want to manage some kind of "global" property we have to pass it around widget constructors which gets very complicated. I believe later in the course I will learn a better system.
 
 # Day 6 (June 16)
 1. End Expense Tracker app. Beginning to work on Navigation. 
@@ -196,89 +207,90 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - No worries about asynchronous loading?... 
     - No worries about blocking the ui thread?...
 
-# Day 7 (June 17)
-1. onUnknownRoute
-    - Basically this is the web equivalent of a 404 page. 
-    - MaterialApp param
-2. onGenerateRoute
-    - dynamically generate a route (could be used for dynamically generating screens)
-    - MaterialApp param
-3. Top Tabs
-    - `170. Adding TabBar to the AppBar`
-    - https://gist.github.com/mitchtabian/d16b239d849f8d175d1f6801011dc0ef
-    - DefaultTabController
-    - This was very easy to set up and looks good. Much easier than setting this up natively. Very intuitive.
-4. Bottom Tabs
-    - `171. Adding a bottom TabBar`
-    - https://gist.github.com/mitchtabian/01c54ffb9362b592641349d7e0d7467b
-    - Interestingly, setting tabs up on the bottom is much more difficult than tabs on the top. This is not intuitive.
-5. Navigation drawer
-    - `172. Adding a custom drawer`
-    - Drawer param in a scaffold
-    - Pretty simple. But I wouldn't say this is necessarily simpler than on native.
-6. removing items from backstack when navigating
-    - `Navigator.of(context).pushReplacementNamed(NAV_TABS_SCREEN)`
-    - This replaces the existing page on the backstack when navigating. This is equally simple on native (with Nav components).
-7. State management
-    - I have a lot of questions about state management at this point. Because in the course if we want to manage some kind of "global" property we have to pass it around widget constructors which gets very complicated. I believe later in the course I will learn a better system.
+# Day 5 (June 12)
+1. trailing/leading attributes in a ListTile
+    - Ex: (trailing) Trash can icon at the end of a list item layout. Convenient since this is very common
+    - Ex: (leading) Something at the front of a list item layout. 
+2. Nested Scrolling
+    - If you have a SingleChildScrollView and a Listview inside it, it works as you would expect. Which is not the case on android. Scrolling is "difficult" to deal with regarding nesting.
+    - But on flutter it is simple. Whichever widget you touch will scroll.
+3. MediaQuery
+    - This isn't better than what we have available on android. I prefer the layout designs using xml for this.
+    1. holds information:
+        - Screen pixel ratio
+        - disable animations
+        - brightness
+        - size (width and height of device)
+4. LayoutBuilder
+    - can wrap a widget in this to apply constraints or get information about the sizing. Similar to ViewTreeObserver on android.
+        - `119. Using the LayoutBuilder widget`
+5. SystemChrome
+    - Set allowed device orientations (force portrait only or landscape only)
+    - system wide settings for application
+    - `WidgetsFlutterBinding.ensureInitialized();` 
+    - `SystemChrome.setPreferredOrientations(
+             [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]
+         );`
+6. Build and Flutter Widget Tree
+    - `137: Widget Tree & Element Tree`
+7. Lifecycle states
+    - `WidgetsBindingObserver`
+    - How to listen for the various lifecycle states in a particular widget or app: `146. Understanding the App Lifecycle`
 
-# Day 8 (June 18)
-1. Beginning "advanced" state management today.
-2. Provider
-    - https://pub.dev/packages/provider
-    - Seems to be the equivalent of LiveData on native?
-3. ChangeNotifier & "**Provider Pattern**"
-    - ex: `class ProductsProvider with ChangeNotifier`
-    - Helps to establish "behind the scenes" communication tunnels between widgets
-    - ex: https://gist.github.com/mitchtabian/a87d9c7ab464c937af25b605f8c2cdb2
-4. ChangeNotifierProvider
-    - `190. Working with Providers and Listeners`
-    - For providing a global state provider to widgets lower in the hierarchy
-5. Mixins
-    - Like a generalized extension
-    - Can use many mixins but only a single class extension
-    - ex: `Person extends Mammal with Agility, Consciousness`
-        - A person is a Mammal. But a person is not "Agility". A person has the ability to use Agility.
-6. `ChangeNotifierProvider.value(value:)` vs `ChangeNotifierProvider(create:)`
-    - for lists/reusing objects: `ChangeNotifierProvider.value(value:)`
-    - for new views or stuff that is not reused `ChangeNotifierProvider(create:)`
-7. Consumer with of Provider
-    - https://gist.github.com/mitchtabian/9b0d00576b24f9eb2ed073de00c67030
-    - Advantage:
-        - Only the part of the widget tree that is wrapped with Consumer will be rebuilt. As opposed to using a global Provider which will rebuild the entire tree.
+# Day 4 (June 11)
+1. ListView
+	- ListView.builder(itemBuilder: <>, itemCount: <>) will **not** load items that are not visible
+		- This is the `Recyclerview` equivalent
+		- itemBuilder: is the RecyclerView Adapter basically
+	- ListView(children[]) will load ALL items, even if they are not visible on screen.
+2. showModalBottomSheet(context: ctx, builder: (bCtx){})
+	- This is a nice built-in widget for displaying a bottom sheet. Pretty convenient.
+	- video: `91. Showing a Model Bottom Sheet` @ 7:55
+3. Navigator
+	1. Navigator.of(context).pop();
+		- Navigator is a "global" navigation object? Like the backstack on android?
+4. ThemeData(primarySwatch: Colors.purple)
+	- This is cool. You can easily set the theme to a variety of pre-packaged material colors.
+	- this isn't that much different than what native does though. You have a theme in stlyes.xml
+	- *However* this is much less confusing than with android. There is so many different themes and sub-themes. Some don't work with others and cause problems. Flutter seems very straightforward.
+	- video: `93: configuring and using themes`
+5. Creating a Chart
+	1. Creating/drawing shapes is extremely simple compared to native.
+		- `100. Creating Bars for our Chart`
+6. FittedBox widget
+	- automatically shrinks text to fit a box
+	- on android this would be difficult to implement. You'd have to calculate the space and manually set the text size based on testing. With Flutter there is a simple widget that does this.
+7. showDatePicker(context: null, initialDate: null, firstDate: null, lastDate: null)
+    - nice packaged way to show a date picker
 
-# Day 9 (June 22)
-1. Dismissible widget
-    - used to "swipe out" items from a list. Very convenient and easy to use
-    - Great animation
-2. Started rebuilding my Local DB caching course app using Flutter
-    - This is to help learn flutter with a project I've already done. (https://github.com/mitchtabian/Local-db-Cache-Retrofit-REST-API-MVVM)
-    - So far, within about 2 hours I built the complete skeleton with navigation and static data.
-3. Snackbars
-    - Working with Snackbars was very easy. 
-    1. Simple to show
-    2. Simple to hide if one was already showing and want to show a new one
-    3. Simple to incorporate "undo" action 
-4. Dialogs
-    - AlertDialogs are very easy to set up and use the input the user chose.
+# Day 2 (June 3)
+1. I like how some color opacity's come prebuilt as constants.
+	- ex: black12, black26, black87, etc..
+	- makes things more consistent across different apps.
+	- Gives description. Ex: "This is a good contrasting color for light themes."
+2. Images
+	- It is way easier to display a simple image. No third party library needed. No async knowledge.
+3. Assets
+	- Getting stuff from assets is much easier. No need for context or any of that BS. Just write the path and boom you got it.
 
-# Day 10 (June 23)
-1. Forms and TextFormFields
-    - Reminds me of HTML forms. Cool how they built a Form widget with Form fields that are built to work together.
-    1. This is surprisingly a lot of work. I don't think this is less code than native would be to create a screen for getting inputs from the user.
-        - `222. Submitting Forms`
-        - Also dealing with the focus and doing form validation is a lot of work. Definitely this is not more concise than native.
-    2. Form validation reminds me of django. You get a boolean that says if the form is valid or not, then take action or show errors.
-2. FocusNode
-    - Programatically decide where the focus goes after moving from Form fields
-    - Can leak memory, need to dispose
-3. Futures
-    - `238. Futures and Async Code`
-4. HTTP requests
-    - Reminds me of http requests with python. Basically the same.
-5. Async and await
-    - `241. Working with async and await`
-6. 
+# Day 3 (June 4)
+1. Finished ListView + DetailView with static data example
+	- https://github.com/mitchtabian/FlutterPlayground/tree/listview-static-data
+	- I'm not amazed by this. I could have built the same thing on android with the same amount of code and time.
+	- I guess the fact that it is **cross platform** is the real payoff.
+2. Dates
+	- https://pub.dev/packages/intl#-readme-tab-
+	- Working with dates is very easy with intl third party library.
+3. Inputs
+	1. All inputs must be Strings?
+		- Obviously I don't like this. b/c you have to do the conversions yourself after the fact.
+4. SingleChildScrollView
+	- Like a ScrollView?
+	- This is cool. It would be nice if a Recyclerview was this easy to hook up and delegate scroll behavior to the parent. Often times it has issues if multiple views that can detect gestures are involved. But I wonder... What is the performance like with a massive list? Say 1000 entries with media?
+
+# Day 1 (June 2)
+1. Kinda neat. Interesting state management
+
 
 
 # Thoughts on Flutter
@@ -309,7 +321,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
         - Flutter rebuild: https://github.com/mitchtabian/Flutter-Recipes-App
 7. June 23:
     1. Input forms, dealing with focus, and input validation are not simple. This has no advantage over native.
-    2. 
+8. June 24
+    1. 
 
 
 
