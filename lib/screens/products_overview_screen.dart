@@ -25,7 +25,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   var _isInit = false;
   var _isLoading = false;
 
-
   @override
   void didChangeDependencies() {
     if(!_isInit){
@@ -37,7 +36,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           });
       _isInit = true;
     }
-
     super.didChangeDependencies();
   }
 

@@ -64,7 +64,29 @@ class _EditProductScreenState extends State<EditProductScreen> {
     _setIsLoading(true);
     if(_editedProduct.id != null){
       Provider.of<ProductsProvider>(context, listen: false)
-          .updateProduct(_editedProduct.id, _editedProduct);
+          .updateProduct(_editedProduct.id, _editedProduct)
+          .catchError((error){
+            _setIsLoading(false);
+            return showDialog(
+              context: context,
+              builder: (ctx) => AlertDialog(
+                title: Text("Error"),
+                content: Text("Something went wrong updating the data on the server."),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              ),
+            );
+          })
+          .then((_) {
+            _setIsLoading(false);
+            Navigator.of(context).pop();
+          });
     }
     else{
       Provider.of<ProductsProvider>(context, listen: false)
