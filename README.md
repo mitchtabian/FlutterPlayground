@@ -60,6 +60,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - What is the equivalent for Flutter? (Think saving user settings)
 13. Caching?
     - How does Flutter handle data persistence? (SQLite?...)
+    - `FutureBuilder`?
 14. Push notifications
     - I heard this was difficult
 15. Camera preview manipulation
