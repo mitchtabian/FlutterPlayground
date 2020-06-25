@@ -10,6 +10,8 @@ class ProductProvider with ChangeNotifier {
 
   String _authToken;
 
+  String _userId;
+
   ProductProvider(this._product);
 
   Product get product{
@@ -21,31 +23,44 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  setUserId(String userId){
+    _userId = userId;
+    notifyListeners();
+  }
+
   setAuthToken(String token){
     _authToken = token;
     notifyListeners();
   }
 
-  String _buildUrl(String node, String id){
+  String _buildUrl({String node, String userId, String productId}){
     String url = "https://flutter-shopping-app-248d6.firebaseio.com/$node";
-    if(id != null){
-      url = url + "/$id";
+    if(userId != null){
+      url = url + "/$userId";
+    }
+    if(productId != null){
+      url = url + "/$productId";
     }
     url = url + ".json?auth=$_authToken";
     return url;
   }
 
+
   Future<void> toggleFavoriteStatus() async {
     final oldStatus = product.isFavorite;
     _product.isFavorite = !_product.isFavorite;
     notifyListeners();
-    final url = _buildUrl("products", product.id);
+    final productUrl = _buildUrl(
+        node:"user_favorites",
+        userId: _userId,
+        productId:product.id
+    );
     try{
-      final response = await http.patch(
-          url,
-          body: json.encode({
-            "isFavorite":_product.isFavorite
-          })
+      final response = await http.put(
+          productUrl,
+          body: json.encode(
+            _product.isFavorite
+          )
       );
       if(response.statusCode >= 400){
         _setFavValue(oldStatus);
@@ -53,7 +68,6 @@ class ProductProvider with ChangeNotifier {
     }catch(error){
       _setFavValue(oldStatus);
     }
-
   }
 
 }

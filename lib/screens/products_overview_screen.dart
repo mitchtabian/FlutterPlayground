@@ -33,7 +33,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
     if(!_isInit){
       _setIsLoading(true);
       Provider.of<ProductsProvider>(context)
-          .fetchAndSetProducts()
+          .fetchAndSetProducts(false)
           .then((value){
             _setIsLoading(false);
           });

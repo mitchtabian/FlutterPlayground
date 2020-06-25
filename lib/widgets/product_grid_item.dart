@@ -24,10 +24,11 @@ class ProductGridItem extends StatelessWidget {
           },
           update: (BuildContext ctx, auth, previous) {
             previous.setAuthToken(auth.token);
+            previous.setUserId(auth.userId);
             return previous;
           },
         ),
-        ],
+      ],
       child: ClipRRect(
         borderRadius: BorderRadius.circular(RoundedRectRadius),
         child: GridTile(

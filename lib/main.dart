@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'screens/splash_screen.dart';
 import 'providers/auth_provider.dart';
 import 'screens/auth_screen.dart';
 import 'screens/product_detail_screen.dart';
@@ -40,6 +41,7 @@ class _MyAppState extends State<MyApp> {
           },
           update: (BuildContext ctx, auth, previous) {
             previous.setAuthToken(auth.token);
+            previous.setUserId(auth.userId);
             return previous;
           },
         ),
@@ -66,7 +68,14 @@ class _MyAppState extends State<MyApp> {
               accentColor: Colors.deepOrange,
               fontFamily: "Lato",
             ),
-            home: auth.isAuth ? ProductsOverviewScreen() : AuthScreen(),
+            home: auth.isAuth ? ProductsOverviewScreen() : FutureBuilder(
+              future: auth.tryAutoLogin(),
+              builder: (ctx, authResultSnapshot) {
+                return authResultSnapshot.connectionState == ConnectionState.waiting ?
+                SplashScreen() :
+                AuthScreen();
+              },
+            ),
             routes: {
               AuthScreen.routeName: (ctx) => AuthScreen(),
               ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),

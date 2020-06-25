@@ -30,6 +30,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - https://pub.dev/packages/provider
 3. HTTP requests
     - https://pub.dev/packages/http#-installing-tab-
+4. SharedPreferences
+    - https://pub.dev/packages/shared_preferences
 
 
 
@@ -57,7 +59,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 11. APK / project size?
     - How does APK / project size compare with native?
 12. SharedPreferences?
-    - What is the equivalent for Flutter? (Think saving user settings)
+    - Shared preferences plugin https://pub.dev/packages/shared_preferences
 13. Caching?
     - How does Flutter handle data persistence? (SQLite?...)
 14. Push notifications
@@ -93,6 +95,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 # Day 12 (June 25)
 1. Saving data locally (token for authentication)
 2. Using providers to provide dependencies to other providers
+    - ex: Providing Auth token from a provider to other providers
     - `263. Using the ProxyProvider and Attaching the token...`
     - ChangeNotifierProxyProvider
 3. 

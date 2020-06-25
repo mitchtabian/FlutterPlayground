@@ -11,6 +11,8 @@ class ProductsProvider with ChangeNotifier {
 
   String _authToken;
 
+  String _userId;
+
   List<ProductProvider> _items = [];
 
   List<ProductProvider> get favoriteItems{
@@ -31,25 +33,45 @@ class ProductsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  String _buildUrl(String node, String id){
+  setUserId(String userId){
+    _userId = userId;
+    notifyListeners();
+  }
+
+  String _buildUrl({String node, String userId, String productId, String orderBy}){
     String url = "https://flutter-shopping-app-248d6.firebaseio.com/$node";
-    if(id != null){
-      url = url + "/$id";
+    if(userId != null){
+      url = url + "/$userId";
+    }
+    if(productId != null){
+      url = url + "/$productId";
     }
     url = url + ".json?auth=$_authToken";
+    if(orderBy != null){
+      url = url + '&orderBy="$orderBy"&equalTo="$_userId"';
+    }
     return url;
   }
 
-  Future<void> fetchAndSetProducts() async {
-    final url = _buildUrl("products", null);
+  Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
+    var url = _buildUrl(
+        node:"products",
+        userId: null,
+        productId: null,
+        orderBy: filterByUser ? "creatorId" : null
+    );
+    print(url);
     try{
-      final response = await http.get(url,);
-      final extractedData = json.decode(response.body) as Map<String, dynamic>;
-      _items.clear();
-      if(extractedData == null){
+      var response = await http.get(url,);
+      final extractedProductsData = json.decode(response.body) as Map<String, dynamic>;
+      if(extractedProductsData == null){
         return;
       }
-      extractedData.forEach((productId, product) {
+      url = _buildUrl(node:"user_favorites", userId: _userId, productId: null, orderBy: null);
+      response = await http.get(url,);
+      final extractedFavoritesData = json.decode(response.body);
+      _items.clear();
+      extractedProductsData.forEach((productId, product) {
         _items.add(
             ProductProvider(
               Product(
@@ -58,7 +80,7 @@ class ProductsProvider with ChangeNotifier {
                 description: product["description"],
                 imageUrl: product["imageUrl"],
                 price: product["price"],
-                isFavorite: product["isFavorite"]
+                isFavorite: extractedFavoritesData == null ? false : extractedFavoritesData[productId] ?? false
               )
             )
         );
@@ -70,7 +92,7 @@ class ProductsProvider with ChangeNotifier {
   }
 
   Future<void> addProduct(Product product) async {
-    final url = _buildUrl("products", null);
+    final url = _buildUrl(node: "products", userId: null, productId: null);
     try{
       final response = await http.post(
           url,
@@ -79,7 +101,7 @@ class ProductsProvider with ChangeNotifier {
             "description": product.description,
             "imageUrl": product.imageUrl,
             "price": product.price,
-            "isFavorite": product.isFavorite
+            "creatorId": _userId
           })
       );
       final newProduct = Product(
@@ -101,7 +123,7 @@ class ProductsProvider with ChangeNotifier {
   Future<void> updateProduct(String id, Product newProduct) async {
     final productIndex = _items.indexWhere((productProvider) => productProvider.product.id == id);
     if(productIndex >= 0){
-      final url = _buildUrl("products", id);
+      final url = _buildUrl(node: "products", userId: null, productId: null);
       await http.patch(
         url,
         body: json.encode({
@@ -117,7 +139,7 @@ class ProductsProvider with ChangeNotifier {
   }
 
   Future<void> deleteProduct(String id) async {
-    final url = _buildUrl("products", id);
+    final url = _buildUrl(node: "products",  userId: null, productId: null);
     var existingProductIndex = _items.indexWhere((productProvider) => productProvider.product.id == id);
     var existingProduct = _items[existingProductIndex];
     _items.removeWhere((productProvider) => productProvider.product.id == id);
