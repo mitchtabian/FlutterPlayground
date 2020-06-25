@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'providers/auth_provider.dart';
+import 'screens/auth_screen.dart';
 import 'screens/product_detail_screen.dart';
 import 'screens/products_overview_screen.dart';
 import 'providers/products_provider.dart';
@@ -29,7 +31,16 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(
           create: (context){
+            return AuthProvider();
+          },
+        ),
+        ChangeNotifierProxyProvider<AuthProvider, ProductsProvider>(
+          create: (BuildContext ctx) {
             return ProductsProvider();
+          },
+          update: (BuildContext ctx, auth, previous) {
+            previous.setAuthToken(auth.token);
+            return previous;
           },
         ),
         ChangeNotifierProvider(
@@ -37,27 +48,35 @@ class _MyAppState extends State<MyApp> {
             return CartProvider();
           },
         ),
-        ChangeNotifierProvider(
-          create: (context){
+        ChangeNotifierProxyProvider<AuthProvider, OrderProvider>(
+          create: (BuildContext ctx) {
             return OrderProvider();
+          },
+          update: (BuildContext ctx, auth, previous) {
+            previous.setAuthToken(auth.token);
+            return previous;
           },
         ),
       ],
-        child: MaterialApp(
-          title: "MyShop",
-          theme: ThemeData(
-            primarySwatch: Colors.purple,
-            accentColor: Colors.deepOrange,
-            fontFamily: "Lato",
-          ),
-          home: ProductsOverviewScreen(),
-          routes: {
-            ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
-            CartScreen.routeName: (ctx) => CartScreen(),
-            OrdersScreen.routeName: (ctx) => OrdersScreen(),
-            UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
-            EditProductScreen.routeName: (ctx) => EditProductScreen(),
-          },
+        child: Consumer<AuthProvider>(
+          builder: (ctx, auth, _) => MaterialApp(
+            title: "MyShop",
+            theme: ThemeData(
+              primarySwatch: Colors.purple,
+              accentColor: Colors.deepOrange,
+              fontFamily: "Lato",
+            ),
+            home: auth.isAuth ? ProductsOverviewScreen() : AuthScreen(),
+            routes: {
+              AuthScreen.routeName: (ctx) => AuthScreen(),
+              ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
+              ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+              CartScreen.routeName: (ctx) => CartScreen(),
+              OrdersScreen.routeName: (ctx) => OrdersScreen(),
+              UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
+              EditProductScreen.routeName: (ctx) => EditProductScreen(),
+            },
+          )
         )
     );
   }

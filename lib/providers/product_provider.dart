@@ -8,6 +8,8 @@ class ProductProvider with ChangeNotifier {
 
   Product _product;
 
+  String _authToken;
+
   ProductProvider(this._product);
 
   Product get product{
@@ -19,11 +21,25 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  setAuthToken(String token){
+    _authToken = token;
+    notifyListeners();
+  }
+
+  String _buildUrl(String node, String id){
+    String url = "https://flutter-shopping-app-248d6.firebaseio.com/$node";
+    if(id != null){
+      url = url + "/$id";
+    }
+    url = url + ".json?auth=$_authToken";
+    return url;
+  }
+
   Future<void> toggleFavoriteStatus() async {
     final oldStatus = product.isFavorite;
     _product.isFavorite = !_product.isFavorite;
     notifyListeners();
-    final url = "https://flutter-shopping-app-248d6.firebaseio.com/products/${product.id}.json";
+    final url = _buildUrl("products", product.id);
     try{
       final response = await http.patch(
           url,

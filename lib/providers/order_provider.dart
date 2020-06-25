@@ -7,14 +7,30 @@ import '../models/order_item.dart';
 
 class OrderProvider with ChangeNotifier {
 
+  String _authToken;
+
   List<OrderItem> _orders = [];
 
   List<OrderItem> get getOrders {
     return [..._orders];
   }
 
+  setAuthToken(String token){
+    _authToken = token;
+    notifyListeners();
+  }
+
+  String _buildUrl(String node, String id){
+    String url = "https://flutter-shopping-app-248d6.firebaseio.com/$node";
+    if(id != null){
+      url = url + "/$id";
+    }
+    url = url + ".json?auth=$_authToken";
+    return url;
+  }
+
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
-    const url = "https://flutter-shopping-app-248d6.firebaseio.com/orders.json";
+    final url = _buildUrl("orders", null);
     try{
       final dateTime = DateTime.now();
       final response = await http.post(
@@ -46,11 +62,10 @@ class OrderProvider with ChangeNotifier {
   }
 
   Future<void> fetchAndSetOrders() async {
-    const url = "https://flutter-shopping-app-248d6.firebaseio.com/orders.json";
+    final url = _buildUrl("orders", null);
     try{
       final response = await http.get(url,);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
-      print(extractedData);
       _orders.clear();
       if(extractedData == null){
         return;

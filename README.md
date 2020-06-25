@@ -47,7 +47,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 	1. Does is load everything even if not visible?
 		- ListView.builder() vs ListView(children: [])
 8. Asynchronous work?
-	- Is there a "main thread" issue?
+	1. async/await and Futures 
 9. Memory leaks?
     - Can you leak memory?
         - Yes you can. And I have no idea how to detect.
@@ -60,7 +60,6 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - What is the equivalent for Flutter? (Think saving user settings)
 13. Caching?
     - How does Flutter handle data persistence? (SQLite?...)
-    - `FutureBuilder`?
 14. Push notifications
     - I heard this was difficult
 15. Camera preview manipulation
@@ -68,7 +67,10 @@ Playing around with flutter. Figuring out if it is for babies or not.
     2. Compare with CameraX?
 16. Long-running services?
     - Suppose something that needs to execute even if the app closes or it's in progress when the app closes
-17. 
+17. Pagination?
+    - I'm not sure how to handle pagination with Flutter?...
+    - TODO:
+        - Try querying a massive amount of list items (1000+) and displaying them. See if it struggles.
 
 
 
@@ -88,9 +90,16 @@ Playing around with flutter. Figuring out if it is for babies or not.
 
 
 
+# Day 12 (June 25)
+1. Saving data locally (token for authentication)
+2. Using providers to provide dependencies to other providers
+    - `263. Using the ProxyProvider and Attaching the token...`
+    - ChangeNotifierProxyProvider
+3. 
+
 
 # Day 11 (June 24)
-1. 
+1. Did all basic CRUD operations today working more with futures. Not particularly impressed or un-impressed. Reminds me of Python. Does the job.
 
 
 # Day 10 (June 23)

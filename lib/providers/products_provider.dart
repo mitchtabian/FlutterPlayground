@@ -9,6 +9,8 @@ import '../models/product.dart';
 
 class ProductsProvider with ChangeNotifier {
 
+  String _authToken;
+
   List<ProductProvider> _items = [];
 
   List<ProductProvider> get favoriteItems{
@@ -24,8 +26,22 @@ class ProductsProvider with ChangeNotifier {
         .firstWhere((provider) => provider.product.id == id);
   }
 
+  setAuthToken(String token){
+    _authToken = token;
+    notifyListeners();
+  }
+
+  String _buildUrl(String node, String id){
+    String url = "https://flutter-shopping-app-248d6.firebaseio.com/$node";
+    if(id != null){
+      url = url + "/$id";
+    }
+    url = url + ".json?auth=$_authToken";
+    return url;
+  }
+
   Future<void> fetchAndSetProducts() async {
-    const url = "https://flutter-shopping-app-248d6.firebaseio.com/products.json";
+    final url = _buildUrl("products", null);
     try{
       final response = await http.get(url,);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
@@ -54,7 +70,7 @@ class ProductsProvider with ChangeNotifier {
   }
 
   Future<void> addProduct(Product product) async {
-    const url = "https://flutter-shopping-app-248d6.firebaseio.com/products.json";
+    final url = _buildUrl("products", null);
     try{
       final response = await http.post(
           url,
@@ -85,7 +101,7 @@ class ProductsProvider with ChangeNotifier {
   Future<void> updateProduct(String id, Product newProduct) async {
     final productIndex = _items.indexWhere((productProvider) => productProvider.product.id == id);
     if(productIndex >= 0){
-      final url = "https://flutter-shopping-app-248d6.firebaseio.com/products/${id}.json";
+      final url = _buildUrl("products", id);
       await http.patch(
         url,
         body: json.encode({
@@ -101,7 +117,7 @@ class ProductsProvider with ChangeNotifier {
   }
 
   Future<void> deleteProduct(String id) async {
-    final url = "https://flutter-shopping-app-248d6.firebaseio.com/products/${id}.json";
+    final url = _buildUrl("products", id);
     var existingProductIndex = _items.indexWhere((productProvider) => productProvider.product.id == id);
     var existingProduct = _items[existingProductIndex];
     _items.removeWhere((productProvider) => productProvider.product.id == id);
