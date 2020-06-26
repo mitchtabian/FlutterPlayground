@@ -3,9 +3,10 @@ Playing around with flutter. Figuring out if it is for babies or not.
 
 
 # This app
-**Native Features**
+**Great Places App**
 
-<img src="" width="250" height="auto">
+<img src="https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Great-Places-App/assets/images/camera.png" width="250" height="auto">
+<img src="https://raw.githubusercontent.com/mitchtabian/FlutterPlayground/Great-Places-App/assets/images/places_list.png" width="250" height="auto">
 
 
 # Resources:
