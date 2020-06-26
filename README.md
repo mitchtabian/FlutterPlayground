@@ -3,7 +3,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 
 
 # This app
-**Shopping App**
+**Native Features**
 
 <img src="" width="250" height="auto">
 
@@ -15,7 +15,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 	- https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps
 3. Widget catalog:
 	- https://flutter.dev/docs/development/ui/widgets
-4.
+
 
 
 # Continue
@@ -32,6 +32,18 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - https://pub.dev/packages/http#-installing-tab-
 4. SharedPreferences
     - https://pub.dev/packages/shared_preferences
+4. Image Picker
+    - https://pub.dev/packages/image_picker
+    - Capturing an image
+5. path_provider and path packages
+    - https://pub.dev/packages/path_provider
+    - Access to android/ios file system to save files
+6. sqflite
+    - https://pub.dev/packages/sqflite
+    - https://pub.dev/packages/hive
+    - Use SQLite on android and ios
+7. Google maps
+    - https://pub.dev/packages/location
 
 
 
@@ -50,6 +62,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 		- ListView.builder() vs ListView(children: [])
 8. Asynchronous work?
 	1. async/await and Futures 
+	    - This is basically the same as coroutines. Just instead of `suspend` functions you mark a line of code with `await`. Which tells the compile to wait until the `Future` is returned to move to the next line of code. I like this.
 9. Memory leaks?
     - Can you leak memory?
         - Yes you can. And I have no idea how to detect.
@@ -65,15 +78,17 @@ Playing around with flutter. Figuring out if it is for babies or not.
 14. Push notifications
     - I heard this was difficult
 15. Camera preview manipulation
-    1. Is it difficult to get a live preview of camera?
-    2. Compare with CameraX?
+    1. Capturing an image: https://pub.dev/packages/image_picker#-installing-tab-
+    2. It's easy to take simple pictures. But far as I can tell there is no way to build a "custom camera" app. Something where you can apply funny filters, Augmented reality, etc...
 16. Long-running services & WorkManager?
     - Suppose something that needs to execute even if the app closes or it's in progress when the app closes
 17. Pagination?
     - I'm not sure how to handle pagination with Flutter?...
     - TODO:
         - Try querying a massive amount of list items (1000+) and displaying them. See if it struggles.
-
+18. Google maps?
+    - https://pub.dev/packages/location
+    
 
 
 # What makes Flutter "Easier" than Native?
@@ -94,6 +109,14 @@ Playing around with flutter. Figuring out if it is for babies or not.
 # Day 13 (June 26)
 1. Animations
     - I don't have a lot of experience with animations on native. But this seems complex.
+2. Using the camera
+    - use Image picker plugin https://pub.dev/packages/image_picker
+3. Asking for permissions
+    - This happens automatically it seems? Depending on the plugin you use. It did when I used the camera plugin.
+4. Caching data with SQLite
+    - sqflite plugin: https://pub.dev/packages/sqflite
+    - This plugin isn't great. Room is definitely far easier to use. This reminds me of the old SQLiteOpenHelper thing that you used to use for SQLite on Android.
+    
 
 
 # Day 12 (June 25)
@@ -280,15 +303,6 @@ Playing around with flutter. Figuring out if it is for babies or not.
 7. showDatePicker(context: null, initialDate: null, firstDate: null, lastDate: null)
     - nice packaged way to show a date picker
 
-# Day 2 (June 3)
-1. I like how some color opacity's come prebuilt as constants.
-	- ex: black12, black26, black87, etc..
-	- makes things more consistent across different apps.
-	- Gives description. Ex: "This is a good contrasting color for light themes."
-2. Images
-	- It is way easier to display a simple image. No third party library needed. No async knowledge.
-3. Assets
-	- Getting stuff from assets is much easier. No need for context or any of that BS. Just write the path and boom you got it.
 
 # Day 3 (June 4)
 1. Finished ListView + DetailView with static data example
@@ -304,6 +318,17 @@ Playing around with flutter. Figuring out if it is for babies or not.
 4. SingleChildScrollView
 	- Like a ScrollView?
 	- This is cool. It would be nice if a Recyclerview was this easy to hook up and delegate scroll behavior to the parent. Often times it has issues if multiple views that can detect gestures are involved. But I wonder... What is the performance like with a massive list? Say 1000 entries with media?
+
+# Day 2 (June 3)
+1. I like how some color opacity's come prebuilt as constants.
+	- ex: black12, black26, black87, etc..
+	- makes things more consistent across different apps.
+	- Gives description. Ex: "This is a good contrasting color for light themes."
+2. Images
+	- It is way easier to display a simple image. No third party library needed. No async knowledge.
+3. Assets
+	- Getting stuff from assets is much easier. No need for context or any of that BS. Just write the path and boom you got it.
+
 
 # Day 1 (June 2)
 1. Kinda neat. Interesting state management
@@ -338,7 +363,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
         - Flutter rebuild: https://github.com/mitchtabian/Flutter-Recipes-App
 7. June 23:
     1. Input forms, dealing with focus, and input validation are not simple. This has no advantage over native.
-8. June 24
+8. June 26
     1. 
 
 
