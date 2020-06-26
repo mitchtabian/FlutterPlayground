@@ -38,7 +38,12 @@ Playing around with flutter. Figuring out if it is for babies or not.
 5. path_provider and path packages
     - https://pub.dev/packages/path_provider
     - Access to android/ios file system to save files
- 
+6. sqflite
+    - https://pub.dev/packages/sqflite
+    - https://pub.dev/packages/hive
+    - Use SQLite on android and ios
+7. Google maps
+    - https://pub.dev/packages/location
 
 
 
@@ -57,6 +62,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 		- ListView.builder() vs ListView(children: [])
 8. Asynchronous work?
 	1. async/await and Futures 
+	    - This is basically the same as coroutines. Just instead of `suspend` functions you mark a line of code with `await`. Which tells the compile to wait until the `Future` is returned to move to the next line of code. I like this.
 9. Memory leaks?
     - Can you leak memory?
         - Yes you can. And I have no idea how to detect.
@@ -81,7 +87,8 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - TODO:
         - Try querying a massive amount of list items (1000+) and displaying them. See if it struggles.
 18. Google maps?
-    - Can you use google maps or the the apple equivalent?
+    - https://pub.dev/packages/location
+    
 
 
 # What makes Flutter "Easier" than Native?
@@ -105,7 +112,11 @@ Playing around with flutter. Figuring out if it is for babies or not.
 2. Using the camera
     - use Image picker plugin https://pub.dev/packages/image_picker
 3. Asking for permissions
-
+    - This happens automatically it seems? Depending on the plugin you use. It did when I used the camera plugin.
+4. Caching data with SQLite
+    - sqflite plugin: https://pub.dev/packages/sqflite
+    - This plugin isn't great. Room is definitely far easier to use. This reminds me of the old SQLiteOpenHelper thing that you used to use for SQLite on Android.
+    
 
 
 # Day 12 (June 25)
