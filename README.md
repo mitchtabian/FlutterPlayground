@@ -67,7 +67,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
 15. Camera preview manipulation
     1. Is it difficult to get a live preview of camera?
     2. Compare with CameraX?
-16. Long-running services?
+16. Long-running services & WorkManager?
     - Suppose something that needs to execute even if the app closes or it's in progress when the app closes
 17. Pagination?
     - I'm not sure how to handle pagination with Flutter?...
@@ -91,6 +91,10 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - Without a third party on android this is not fun. I can honestly say I don't even know how to do that.
 
 
+# Day 13 (June 26)
+1. Animations
+    - I don't have a lot of experience with animations on native. But this seems complex.
+
 
 # Day 12 (June 25)
 1. Saving data locally (token for authentication)
@@ -98,7 +102,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - ex: Providing Auth token from a provider to other providers
     - `263. Using the ProxyProvider and Attaching the token...`
     - ChangeNotifierProxyProvider
-3. 
+
 
 
 # Day 11 (June 24)
