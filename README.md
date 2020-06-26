@@ -96,6 +96,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - I don't have a lot of experience with animations on native. But this seems complex.
 
 
+
 # Day 12 (June 25)
 1. Saving data locally (token for authentication)
 2. Using providers to provide dependencies to other providers
@@ -280,15 +281,6 @@ Playing around with flutter. Figuring out if it is for babies or not.
 7. showDatePicker(context: null, initialDate: null, firstDate: null, lastDate: null)
     - nice packaged way to show a date picker
 
-# Day 2 (June 3)
-1. I like how some color opacity's come prebuilt as constants.
-	- ex: black12, black26, black87, etc..
-	- makes things more consistent across different apps.
-	- Gives description. Ex: "This is a good contrasting color for light themes."
-2. Images
-	- It is way easier to display a simple image. No third party library needed. No async knowledge.
-3. Assets
-	- Getting stuff from assets is much easier. No need for context or any of that BS. Just write the path and boom you got it.
 
 # Day 3 (June 4)
 1. Finished ListView + DetailView with static data example
@@ -304,6 +296,17 @@ Playing around with flutter. Figuring out if it is for babies or not.
 4. SingleChildScrollView
 	- Like a ScrollView?
 	- This is cool. It would be nice if a Recyclerview was this easy to hook up and delegate scroll behavior to the parent. Often times it has issues if multiple views that can detect gestures are involved. But I wonder... What is the performance like with a massive list? Say 1000 entries with media?
+
+# Day 2 (June 3)
+1. I like how some color opacity's come prebuilt as constants.
+	- ex: black12, black26, black87, etc..
+	- makes things more consistent across different apps.
+	- Gives description. Ex: "This is a good contrasting color for light themes."
+2. Images
+	- It is way easier to display a simple image. No third party library needed. No async knowledge.
+3. Assets
+	- Getting stuff from assets is much easier. No need for context or any of that BS. Just write the path and boom you got it.
+
 
 # Day 1 (June 2)
 1. Kinda neat. Interesting state management
@@ -338,7 +341,7 @@ Playing around with flutter. Figuring out if it is for babies or not.
         - Flutter rebuild: https://github.com/mitchtabian/Flutter-Recipes-App
 7. June 23:
     1. Input forms, dealing with focus, and input validation are not simple. This has no advantage over native.
-8. June 24
+8. June 26
     1. 
 
 
