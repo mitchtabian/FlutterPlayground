@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'dart:io';
 
+import '../models/place_location.dart';
 
 class Place {
 
   final String id;
   final String title;
-  final dynamic location;
+  final PlaceLocation location;
   final File image;
 
   Place({
@@ -17,3 +18,4 @@ class Place {
   });
 
 }
+

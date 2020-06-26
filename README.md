@@ -32,6 +32,13 @@ Playing around with flutter. Figuring out if it is for babies or not.
     - https://pub.dev/packages/http#-installing-tab-
 4. SharedPreferences
     - https://pub.dev/packages/shared_preferences
+4. Image Picker
+    - https://pub.dev/packages/image_picker
+    - Capturing an image
+5. path_provider and path packages
+    - https://pub.dev/packages/path_provider
+    - Access to android/ios file system to save files
+ 
 
 
 
@@ -65,15 +72,16 @@ Playing around with flutter. Figuring out if it is for babies or not.
 14. Push notifications
     - I heard this was difficult
 15. Camera preview manipulation
-    1. Is it difficult to get a live preview of camera?
-    2. Compare with CameraX?
+    1. Capturing an image: https://pub.dev/packages/image_picker#-installing-tab-
+    2. It's easy to take simple pictures. But far as I can tell there is no way to build a "custom camera" app. Something where you can apply funny filters, Augmented reality, etc...
 16. Long-running services & WorkManager?
     - Suppose something that needs to execute even if the app closes or it's in progress when the app closes
 17. Pagination?
     - I'm not sure how to handle pagination with Flutter?...
     - TODO:
         - Try querying a massive amount of list items (1000+) and displaying them. See if it struggles.
-
+18. Google maps?
+    - Can you use google maps or the the apple equivalent?
 
 
 # What makes Flutter "Easier" than Native?
@@ -94,6 +102,9 @@ Playing around with flutter. Figuring out if it is for babies or not.
 # Day 13 (June 26)
 1. Animations
     - I don't have a lot of experience with animations on native. But this seems complex.
+2. Using the camera
+    - use Image picker plugin https://pub.dev/packages/image_picker
+3. Asking for permissions
 
 
 
